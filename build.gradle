@@ -23,6 +23,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	runtimeOnly 'com.h2database:h2'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -38,6 +43,7 @@ spotless {
 		target("src/main/java/**/*.java", "src/test/java/**/*.java")
 		googleJavaFormat("$googleJavaFormatVersion")
 		importOrder('java', 'javax', 'jakarta', 'org', 'com')
+		indentWithTabs(2)
 		removeUnusedImports()
 		trimTrailingWhitespace()
 		endWithNewline()
