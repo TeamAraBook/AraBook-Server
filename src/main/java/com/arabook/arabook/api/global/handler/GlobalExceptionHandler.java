@@ -17,6 +17,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.arabook.arabook.common.exception.common.BusinessException;
 import com.arabook.arabook.common.exception.common.ClientException;
+import com.arabook.arabook.common.response.ResponseTemplate;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,54 +25,58 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GlobalExceptionHandler {
 	@ExceptionHandler(ClientException.class)
-	public ResponseEntity<String> handleCustomException(ClientException ex) {
-		return ResponseEntity.status(ex.getExceptionType().status()).body(ex.getMessage());
+	public ResponseEntity<ResponseTemplate> handleCustomException(ClientException ex) {
+		return ResponseEntity.status(ex.getExceptionType().status())
+				.body(ResponseTemplate.error(ex.getExceptionType()));
 	}
 
 	@ExceptionHandler(BusinessException.class)
-	public ResponseEntity<String> handleCustomException(BusinessException ex) {
+	public ResponseEntity<ResponseTemplate> handleCustomException(BusinessException ex) {
 		log.error(
 				"🚨BusinessException occurred: {} 🚨\n{}", ex.getMessage(), getStackTraceAsString(ex));
-		return ResponseEntity.status(ex.getExceptionType().status()).body(ex.getMessage());
+		return ResponseEntity.status(ex.getExceptionType().status())
+				.body(ResponseTemplate.error(ex.getExceptionType()));
 	}
 
 	@ExceptionHandler(RuntimeException.class)
-	public ResponseEntity<String> handleServerException(RuntimeException ex) {
+	public ResponseEntity<ResponseTemplate> handleServerException(RuntimeException ex) {
 		log.error(
 				"🚨 InternalException occurred: {} 🚨\n{}", ex.getMessage(), getStackTraceAsString(ex));
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-				.body(INTERNAL_SERVER_ERROR.getMessage());
+				.body(ResponseTemplate.error(INTERNAL_SERVER_ERROR));
 	}
 
 	@ExceptionHandler(NoHandlerFoundException.class)
-	public ResponseEntity<String> handleNotFoundException(NoHandlerFoundException ex) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND)
-				.body(NOT_FOUND_PATH.getMessage() + ": " + ex.getRequestURL());
+	public ResponseEntity<ResponseTemplate> handleNotFoundException(NoHandlerFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseTemplate.error(NOT_FOUND_PATH));
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<String> handleValidationError(MethodArgumentNotValidException ex) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(INVALID_INPUT_VALUE.getMessage());
+	public ResponseEntity<ResponseTemplate> handleValidationError(
+			MethodArgumentNotValidException ex) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(ResponseTemplate.error(INVALID_INPUT_VALUE));
 	}
 
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	public ResponseEntity<String> handleMethodArgumentTypeMismatchException(
+	public ResponseEntity<ResponseTemplate> handleMethodArgumentTypeMismatchException(
 			MethodArgumentTypeMismatchException ex) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(INVALID_REQUEST_PARAM_TYPE.getMessage());
+				.body(ResponseTemplate.error(INVALID_REQUEST_PARAM_TYPE));
 	}
 
 	@ExceptionHandler(MissingServletRequestParameterException.class)
-	public ResponseEntity<String> handleMissingServletRequestParameterException(
+	public ResponseEntity<ResponseTemplate> handleMissingServletRequestParameterException(
 			MissingServletRequestParameterException ex) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(NOT_NULL_REQUEST_PARAM.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(ResponseTemplate.error(NOT_NULL_REQUEST_PARAM));
 	}
 
 	@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-	public ResponseEntity<String> handleHttpMediaTypeNotSupportedException(
+	public ResponseEntity<ResponseTemplate> handleHttpMediaTypeNotSupportedException(
 			HttpMediaTypeNotSupportedException ex) {
 		return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-				.body(INVALID_JSON_TYPE.getMessage());
+				.body(ResponseTemplate.error(INVALID_JSON_TYPE));
 	}
 
 	private String getStackTraceAsString(Exception ex) {
