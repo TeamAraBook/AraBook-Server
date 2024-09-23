@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ArabookApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(ArabookApplication.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(ArabookApplication.class, args);
+	}
 }
