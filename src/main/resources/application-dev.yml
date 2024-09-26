@@ -6,25 +6,19 @@ spring:
       add-mappings: false
 
   datasource:
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     url: {DEV_DB_URL}
     username: {DEV_DB_USERNAME}
-    password:
+    password: {DEV_DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
         show_sql: true
     open-in-view: false
-    defer-datasource-initialization: true
   data:
     redis:
       host: {DEV_REDIS_HOST}
       port: {DEV_REDIS_PORT}
-
-  h2:
-    console:
-      enabled: true
-      path: {DEV_H2_CONSOLE_PATH}
