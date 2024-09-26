@@ -1,9 +1,9 @@
-package com.arabook.arabook.api.book;
+package com.arabook.arabook.api.book.controller;
 
 import org.springframework.http.ResponseEntity;
 
-import com.arabook.arabook.api.book.response.BookDetailResponse;
-import com.arabook.arabook.api.book.response.BooksResponse;
+import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
+import com.arabook.arabook.api.book.controller.dto.response.BooksResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import io.swagger.v3.oas.annotations.Operation;

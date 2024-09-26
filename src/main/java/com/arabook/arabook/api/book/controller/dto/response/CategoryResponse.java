@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.book.response;
+package com.arabook.arabook.api.book.controller.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

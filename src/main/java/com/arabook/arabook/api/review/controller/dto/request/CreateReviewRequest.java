@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.review;
+package com.arabook.arabook.api.review.controller.dto.request;
 
 import java.time.LocalDate;
 
