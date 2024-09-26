@@ -1,7 +1,8 @@
-package com.arabook.arabook.api.review;
+package com.arabook.arabook.api.review.controller;
 
 import org.springframework.http.ResponseEntity;
 
+import com.arabook.arabook.api.review.controller.dto.request.CreateReviewRequest;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import io.swagger.v3.oas.annotations.Operation;
