@@ -21,7 +21,7 @@ jobs:
       - name: resources 폴더 내 파일 생성
         run: |
           mkdir -p src/main/resources
-          echo "${{ secrets.SECRET_PROPERTIES }}" > src/main/resources/resources/application-secret.properties
+          echo "${{ secrets.SECRET_PROPERTIES }}" > src/main/resources/application-secret.properties
 
       - name: build
         run: |
