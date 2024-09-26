@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(name = "BookDetailResponse", description = "책 상세 조회 응답 DTO")
 public record BookDetailResponse(
 		@Schema(description = "책 id", example = "1") long bookId,
 		@Schema(description = "책 표지 url", example = "https://images/1") String coverUrl,
