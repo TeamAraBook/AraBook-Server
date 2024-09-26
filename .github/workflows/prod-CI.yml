@@ -1,0 +1,30 @@
+name: AraBook PROD CI
+
+on:
+  pull_request:
+    branches: [ "prod" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: resources 폴더 내 파일 생성
+        run: |
+          mkdir -p src/main/resources
+          echo "${{ secrets.SECRET_PROPERTIES }}" > src/main/resources/resources/application-secret.properties
+
+      - name: build
+        run: |
+          chmod +x gradlew
+          ./gradlew build
+        shell: bash
