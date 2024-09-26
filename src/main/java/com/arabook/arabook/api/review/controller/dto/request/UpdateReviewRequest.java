@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(name = "UpdateReviewRequest", description = "책에 대한 리뷰 수정 요청 DTO")
 public record UpdateReviewRequest(
 		@NotNull @Schema(description = "기록 id", example = "1") Long reviewId,
 		@NotNull
