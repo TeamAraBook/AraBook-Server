@@ -39,4 +39,12 @@ public interface ReviewApi {
 			})
 	@Operation(summary = "책 기록하기: 책 기록 수정 요청", description = "책 기록을 수정합니다.")
 	ResponseEntity<ResponseTemplate> updateReview(UpdateReviewRequest request);
+
+	@ApiResponses(
+			value = {
+				@ApiResponse(responseCode = "204", description = "기록을 삭제했습니다."),
+				@ApiResponse(responseCode = "404", description = "기록을 찾을 수 없습니다.")
+			})
+	@Operation(summary = "책 기록하기: 책 기록 삭제 요청", description = "책 기록을 삭제합니다.")
+	ResponseEntity<ResponseTemplate> deleteReview(Long reviewId);
 }
