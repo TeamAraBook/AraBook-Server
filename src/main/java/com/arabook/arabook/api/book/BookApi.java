@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.arabook.arabook.api.book.response.AIRecommendBookResponse;
+import com.arabook.arabook.api.book.response.BookDetailResponse;
 import com.arabook.arabook.api.book.response.BookResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
@@ -22,4 +23,8 @@ public interface BookApi {
 	@ApiResponses(value = {@ApiResponse(responseCode = "200", description = "베스트셀러 책 조회에 성공했습니다.")})
 	@Operation(summary = "홈: 이달의 베스트셀러 조회", description = "이달의 베스트셀러를 조회합니다.")
 	ResponseEntity<ResponseTemplate<List<BookResponse>>> getBestSellerBooks();
+
+	@ApiResponses(value = {@ApiResponse(responseCode = "200", description = "책 상세보기 조회에 성공했습니다.")})
+	@Operation(summary = "책 상세보기: 책 정보 조회", description = "책 정보를 조회합니다.")
+	ResponseEntity<ResponseTemplate<BookDetailResponse>> getBookDetail(Long bookId);
 }
