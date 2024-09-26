@@ -13,7 +13,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "book", description = "책와 관련된 API")
 public interface BookApi {
-	@ApiResponses(value = {@ApiResponse(responseCode = "200", description = "책 상세보기 조회에 성공했습니다.")})
+	@ApiResponses(
+			value = {
+				@ApiResponse(responseCode = "200", description = "책 상세보기 조회에 성공했습니다."),
+				@ApiResponse(responseCode = "404", description = "해당 책을 찾을 수 없습니다")
+			})
 	@Operation(summary = "책 상세보기: 책 정보 조회", description = "책 정보를 조회합니다.")
 	ResponseEntity<ResponseTemplate<BookDetailResponse>> getBookDetail(Long bookId);
 
