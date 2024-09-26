@@ -25,4 +25,8 @@ public interface BookApi {
 	@ApiResponses(value = {@ApiResponse(responseCode = "200", description = "책 상세보기 조회에 성공했습니다.")})
 	@Operation(summary = "책 상세보기: 책 정보 조회", description = "책 정보를 조회합니다.")
 	ResponseEntity<ResponseTemplate<BookDetailResponse>> getBookDetail(Long bookId);
+
+	@ApiResponses(value = {@ApiResponse(responseCode = "200", description = "검색에 성공했습니다")})
+	@Operation(summary = "책 검색: 책 이름으로 조회", description = "책 이름으로 검색합니다")
+	ResponseEntity<ResponseTemplate<BooksResponse>> getBooksBySearch(String search);
 }
