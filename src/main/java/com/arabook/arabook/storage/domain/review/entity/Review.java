@@ -3,6 +3,8 @@ package com.arabook.arabook.storage.domain.review.entity;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.common.entity.BaseTimeEntity;
@@ -38,11 +41,13 @@ public class Review extends BaseTimeEntity {
 	@JoinColumn(name = "book_id")
 	private Book book;
 
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private ReviewTag reviewTag;
 
-	private LocalDate readStartDate;
+	@NotNull private LocalDate readStartDate;
 
-	private LocalDate readEndDate;
+	@NotNull private LocalDate readEndDate;
 
 	@Builder
 	private Review(
