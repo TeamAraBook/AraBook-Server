@@ -1,5 +1,6 @@
 package com.arabook.arabook.storage.domain.member.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,9 +33,13 @@ public class Member extends BaseTimeEntity {
 	@Enumerated(EnumType.STRING)
 	private SocialPlatformType socialPlatformType;
 
-	@NotNull private String socialPlatformId;
+	@NotNull
+	@Column(unique = true)
+	private String socialPlatformId;
 
-	@NotNull private String email;
+	@NotNull
+	@Column(unique = true)
+	private String email;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
