@@ -1,0 +1,57 @@
+package com.arabook.arabook.storage.domain.member.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
+import com.arabook.arabook.storage.domain.member.entity.enums.Gender;
+import com.arabook.arabook.storage.domain.member.entity.enums.Role;
+import com.arabook.arabook.storage.domain.member.entity.enums.SocialPlatformType;
+
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Table(name = "members")
+public class Member {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long memberId;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	SocialPlatformType socialPlatformType;
+
+	@NotNull String socialPlatformId;
+
+	@NotNull String email;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	Gender gender;
+
+	int age;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	Role role;
+
+	@Builder
+	private Member(SocialPlatformType socialPlatformType, String socialPlatformId, String email) {
+		this.socialPlatformType = socialPlatformType;
+		this.socialPlatformId = socialPlatformId;
+		this.email = email;
+		this.gender = Gender.UNKNOWN;
+		this.age = 999;
+		this.role = Role.GUEST;
+	}
+}
