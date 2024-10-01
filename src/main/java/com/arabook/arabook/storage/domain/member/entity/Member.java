@@ -26,25 +26,25 @@ import lombok.NoArgsConstructor;
 public class Member extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long memberId;
+	private Long memberId;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	SocialPlatformType socialPlatformType;
+	private SocialPlatformType socialPlatformType;
 
-	@NotNull String socialPlatformId;
+	@NotNull private String socialPlatformId;
 
-	@NotNull String email;
-
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	Gender gender;
-
-	int age;
+	@NotNull private String email;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	Role role;
+	private Gender gender;
+
+	private int age;
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	@Builder
 	private Member(SocialPlatformType socialPlatformType, String socialPlatformId, String email) {

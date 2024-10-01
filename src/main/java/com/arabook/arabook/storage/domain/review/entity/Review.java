@@ -28,21 +28,21 @@ import lombok.NoArgsConstructor;
 public class Review extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long reviewId;
+	private Long reviewId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "reviewer_id")
-	Member reviwer;
+	private Member reviwer;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id")
-	Book book;
+	private Book book;
 
-	ReviewTag reviewTag;
+	private ReviewTag reviewTag;
 
-	LocalDate readStartDate;
+	private LocalDate readStartDate;
 
-	LocalDate readEndDate;
+	private LocalDate readEndDate;
 
 	@Builder
 	private Review(

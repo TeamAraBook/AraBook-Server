@@ -22,23 +22,23 @@ import lombok.NoArgsConstructor;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long bookId;
+	private Long bookId;
 
 	@NotNull
 	@Column(length = 13, unique = true)
-	String isbn;
+	private String isbn;
 
-	@NotNull String title;
+	@NotNull private String title;
 
-	@NotNull String author;
+	@NotNull private String author;
 
-	@NotNull String coverUrl;
+	@NotNull private String coverUrl;
 
-	@NotNull Year publishYear;
+	@NotNull private Year publishYear;
 
-	@NotNull String publisher;
+	@NotNull private String publisher;
 
-	@NotNull String description;
+	@NotNull private String description;
 
 	@Builder
 	private Book(
