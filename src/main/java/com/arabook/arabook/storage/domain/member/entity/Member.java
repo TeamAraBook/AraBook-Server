@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import com.arabook.arabook.storage.domain.common.entity.BaseTimeEntity;
 import com.arabook.arabook.storage.domain.member.entity.enums.Gender;
 import com.arabook.arabook.storage.domain.member.entity.enums.Role;
 import com.arabook.arabook.storage.domain.member.entity.enums.SocialPlatformType;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "members")
-public class Member {
+public class Member extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long memberId;
