@@ -22,8 +22,8 @@ public class BookController {
 
   @GetMapping("/search")
   public ResponseEntity<ResponseTemplate<BooksResponse>> getBooksBySearch(
-      @RequestParam("search") final String searchKeyword) {
-    BooksResponse response = bookService.getBooksBySearch(searchKeyword);
+      @RequestParam("keyword") final String keyword) {
+    BooksResponse response = bookService.getBooksBySearch(keyword);
     return ResponseEntity.ok(ResponseTemplate.success(GET_BOOKS_BY_SEARCH, response));
   }
 }

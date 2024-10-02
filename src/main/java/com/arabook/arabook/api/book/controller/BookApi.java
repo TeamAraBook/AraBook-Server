@@ -30,5 +30,5 @@ public interface BookApi {
       @Parameter(
               description = "검색할 책 이름, ISBN 또는 저자 이름 사용자가 입력값 없이 검색을 누를 경우 빈 문자열로 요청해야 함",
               required = true)
-          String search);
+          String keyword);
 }
