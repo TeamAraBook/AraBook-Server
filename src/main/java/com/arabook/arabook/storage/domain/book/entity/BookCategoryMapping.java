@@ -20,15 +20,15 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "book_category_mappings")
 public class BookCategoryMapping {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bookCategoryMappingId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long bookCategoryMappingId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_id")
-	private Book book;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "book_id")
+  private Book book;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id")
-	private Category category;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_id")
+  private Category category;
 }

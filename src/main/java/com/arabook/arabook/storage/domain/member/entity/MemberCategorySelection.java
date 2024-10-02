@@ -21,21 +21,21 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "member_category_selections")
 public class MemberCategorySelection {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long memberCategorySelectionId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long memberCategorySelectionId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "member_id")
+  private Member member;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id")
-	private Category category;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_id")
+  private Category category;
 
-	@Builder
-	private MemberCategorySelection(Member member, Category category) {
-		this.member = member;
-		this.category = category;
-	}
+  @Builder
+  private MemberCategorySelection(Member member, Category category) {
+    this.member = member;
+    this.category = category;
+  }
 }

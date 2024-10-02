@@ -25,39 +25,39 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "members")
 public class Member extends BaseTimeEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long memberId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long memberId;
 
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private SocialPlatformType socialPlatformType;
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private SocialPlatformType socialPlatformType;
 
-	@NotNull
-	@Column(unique = true)
-	private String socialPlatformId;
+  @NotNull
+  @Column(unique = true)
+  private String socialPlatformId;
 
-	@NotNull
-	@Column(unique = true)
-	private String email;
+  @NotNull
+  @Column(unique = true)
+  private String email;
 
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private Gender gender;
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private Gender gender;
 
-	private int age;
+  private int age;
 
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private Role role;
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private Role role;
 
-	@Builder
-	private Member(SocialPlatformType socialPlatformType, String socialPlatformId, String email) {
-		this.socialPlatformType = socialPlatformType;
-		this.socialPlatformId = socialPlatformId;
-		this.email = email;
-		this.gender = Gender.UNKNOWN;
-		this.age = 999;
-		this.role = Role.GUEST;
-	}
+  @Builder
+  private Member(SocialPlatformType socialPlatformType, String socialPlatformId, String email) {
+    this.socialPlatformType = socialPlatformType;
+    this.socialPlatformId = socialPlatformId;
+    this.email = email;
+    this.gender = Gender.UNKNOWN;
+    this.age = 999;
+    this.role = Role.GUEST;
+  }
 }

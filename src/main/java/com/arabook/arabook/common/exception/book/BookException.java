@@ -4,7 +4,7 @@ import com.arabook.arabook.common.exception.common.ClientException;
 import com.arabook.arabook.common.exception.common.ExceptionType;
 
 public class BookException extends ClientException {
-	public BookException(ExceptionType exceptionType) {
-		super(exceptionType);
-	}
+  public BookException(ExceptionType exceptionType) {
+    super(exceptionType);
+  }
 }

@@ -20,15 +20,15 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "book_hashtag_mappings")
 public class BookHashtagMapping {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bookHashtagMappingId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long bookHashtagMappingId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_id")
-	private Book book;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "book_id")
+  private Book book;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hashtag_id")
-	private Hashtag hashtag;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "hashtag_id")
+  private Hashtag hashtag;
 }

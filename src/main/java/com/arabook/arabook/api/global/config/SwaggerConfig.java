@@ -12,28 +12,28 @@ import io.swagger.v3.oas.annotations.security.SecuritySchemes;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 @OpenAPIDefinition(
-		info =
-				@Info(title = "AraBook", description = "AraBook SERVER API Documentation", version = "v1"),
-		security = {
-			@SecurityRequirement(name = "Authorization"),
-			@SecurityRequirement(name = "Authorization-refresh")
-		},
-		servers = {
-			@Server(url = "http://localhost:8080", description = "local server"),
-		})
+    info =
+        @Info(title = "AraBook", description = "AraBook SERVER API Documentation", version = "v1"),
+    security = {
+      @SecurityRequirement(name = "Authorization"),
+      @SecurityRequirement(name = "Authorization-refresh")
+    },
+    servers = {
+      @Server(url = "http://localhost:8080", description = "local server"),
+    })
 @SecuritySchemes({
-	@SecurityScheme(
-			name = "Authorization",
-			type = SecuritySchemeType.APIKEY,
-			description = "access token",
-			in = SecuritySchemeIn.HEADER,
-			paramName = "Authorization"),
-	@SecurityScheme(
-			name = "Authorization-refresh",
-			type = SecuritySchemeType.APIKEY,
-			description = "refresh token",
-			in = SecuritySchemeIn.HEADER,
-			paramName = "Authorization-refresh"),
+  @SecurityScheme(
+      name = "Authorization",
+      type = SecuritySchemeType.APIKEY,
+      description = "access token",
+      in = SecuritySchemeIn.HEADER,
+      paramName = "Authorization"),
+  @SecurityScheme(
+      name = "Authorization-refresh",
+      type = SecuritySchemeType.APIKEY,
+      description = "refresh token",
+      in = SecuritySchemeIn.HEADER,
+      paramName = "Authorization-refresh"),
 })
 @Configuration
 public class SwaggerConfig {}

@@ -23,17 +23,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "daily_book_id_recommendations")
 public class AIRecommendation {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long dailyBookIdRecommendationId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long dailyBookIdRecommendationId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "member_id")
+  private Member member;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_id")
-	private Book book;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "book_id")
+  private Book book;
 
-	@NotNull LocalDate recommendationDate;
+  @NotNull LocalDate recommendationDate;
 }

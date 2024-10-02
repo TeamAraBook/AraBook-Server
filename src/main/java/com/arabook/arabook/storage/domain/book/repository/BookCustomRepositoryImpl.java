@@ -16,23 +16,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BookCustomRepositoryImpl implements BookCustomRepository {
 
-	private final JPAQueryFactory queryFactory;
+  private final JPAQueryFactory queryFactory;
 
-	@Override
-	public List<BookResponse> findBooksBySearch(String searchKeyword) {
-		QBook book = QBook.book;
-		BooleanBuilder builder = new BooleanBuilder();
+  @Override
+  public List<BookResponse> findBooksBySearch(String searchKeyword) {
+    QBook book = QBook.book;
+    BooleanBuilder builder = new BooleanBuilder();
 
-		builder.and(book.author.containsIgnoreCase(searchKeyword));
-		builder.and(book.title.containsIgnoreCase(searchKeyword));
-		builder.and(book.isbn.eq(searchKeyword));
+    builder.and(book.author.containsIgnoreCase(searchKeyword));
+    builder.and(book.title.containsIgnoreCase(searchKeyword));
+    builder.and(book.isbn.eq(searchKeyword));
 
-		return queryFactory
-				.select(
-						Projections.constructor(
-								BookResponse.class, book.bookId, book.coverUrl, book.title, book.author))
-				.from(book)
-				.where(builder)
-				.fetch();
-	}
+    return queryFactory
+        .select(
+            Projections.constructor(
+                BookResponse.class, book.bookId, book.coverUrl, book.title, book.author))
+        .from(book)
+        .where(builder)
+        .fetch();
+  }
 }

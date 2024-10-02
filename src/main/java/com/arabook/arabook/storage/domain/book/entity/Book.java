@@ -24,48 +24,48 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "books")
 public class Book {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bookId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long bookId;
 
-	@NotNull
-	@Column(length = 13, unique = true)
-	private String isbn;
+  @NotNull
+  @Column(length = 13, unique = true)
+  private String isbn;
 
-	@NotNull private String title;
+  @NotNull private String title;
 
-	@NotNull private String author;
+  @NotNull private String author;
 
-	@NotNull private String coverUrl;
+  @NotNull private String coverUrl;
 
-	@NotNull private Year publishYear;
+  @NotNull private Year publishYear;
 
-	@NotNull private String publisher;
+  @NotNull private String publisher;
 
-	@NotNull private String description;
+  @NotNull private String description;
 
-	@Builder
-	private Book(
-			String isbn,
-			String title,
-			String author,
-			String coverUrl,
-			Year publishYear,
-			String publisher,
-			String description) {
-		this.isbn = validateIsbn(isbn);
-		this.title = title;
-		this.author = author;
-		this.coverUrl = coverUrl;
-		this.publishYear = publishYear;
-		this.publisher = publisher;
-		this.description = description;
-	}
+  @Builder
+  private Book(
+      String isbn,
+      String title,
+      String author,
+      String coverUrl,
+      Year publishYear,
+      String publisher,
+      String description) {
+    this.isbn = validateIsbn(isbn);
+    this.title = title;
+    this.author = author;
+    this.coverUrl = coverUrl;
+    this.publishYear = publishYear;
+    this.publisher = publisher;
+    this.description = description;
+  }
 
-	private String validateIsbn(String isbn) {
-		if (isbn.length() != 13) {
-			throw new BookException(INVALID_BOOK_ISBN);
-		}
-		return isbn;
-	}
+  private String validateIsbn(String isbn) {
+    if (isbn.length() != 13) {
+      throw new BookException(INVALID_BOOK_ISBN);
+    }
+    return isbn;
+  }
 }

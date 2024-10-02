@@ -15,11 +15,11 @@ import lombok.RequiredArgsConstructor;
 @RestController("/books")
 @RequiredArgsConstructor
 public class BookController {
-	private final BookService bookService;
+  private final BookService bookService;
 
-	public ResponseEntity<ResponseTemplate<BooksResponse>> getBooksBySearch(
-			@RequestParam("search") final String searchKeyword) {
-		BooksResponse response = bookService.getBooksBySearch(searchKeyword);
-		return ResponseEntity.ok(ResponseTemplate.success(GET_BOOKS_BY_SEARCH, response));
-	}
+  public ResponseEntity<ResponseTemplate<BooksResponse>> getBooksBySearch(
+      @RequestParam("search") final String searchKeyword) {
+    BooksResponse response = bookService.getBooksBySearch(searchKeyword);
+    return ResponseEntity.ok(ResponseTemplate.success(GET_BOOKS_BY_SEARCH, response));
+  }
 }
