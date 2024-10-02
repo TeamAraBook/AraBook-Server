@@ -23,9 +23,9 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
     QBook book = QBook.book;
     BooleanBuilder builder = new BooleanBuilder();
 
-    builder.and(book.author.containsIgnoreCase(keyword));
-    builder.and(book.title.containsIgnoreCase(keyword));
-    builder.and(book.isbn.eq(keyword));
+    builder.or(book.author.containsIgnoreCase(keyword));
+    builder.or(book.title.containsIgnoreCase(keyword));
+    builder.or(book.isbn.eq(keyword));
 
     return queryFactory
         .select(
