@@ -18,8 +18,8 @@ public class BookServiceImpl implements BookService {
 	private final BookRepository bookRepository;
 
 	@Override
-	public BooksResponse getBooksBySearch(String keyword) {
-		final List<BookResponse> bookResponses = bookRepository.findSearchedBooks(keyword);
+	public BooksResponse getBooksBySearch(final String searchKeyword) {
+		final List<BookResponse> bookResponses = bookRepository.findBooksBySearch(searchKeyword);
 		return BooksResponse.of(bookResponses.size(), bookResponses);
 	}
 }
