@@ -19,13 +19,13 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
   private final JPAQueryFactory queryFactory;
 
   @Override
-  public List<BookResponse> findBooksBySearch(final String searchKeyword) {
+  public List<BookResponse> findBooksBySearch(final String keyword) {
     QBook book = QBook.book;
     BooleanBuilder builder = new BooleanBuilder();
 
-    builder.and(book.author.containsIgnoreCase(searchKeyword));
-    builder.and(book.title.containsIgnoreCase(searchKeyword));
-    builder.and(book.isbn.eq(searchKeyword));
+    builder.and(book.author.containsIgnoreCase(keyword));
+    builder.and(book.title.containsIgnoreCase(keyword));
+    builder.and(book.isbn.eq(keyword));
 
     return queryFactory
         .select(
