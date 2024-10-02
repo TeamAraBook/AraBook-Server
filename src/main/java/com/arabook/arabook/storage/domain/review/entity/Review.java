@@ -1,5 +1,7 @@
 package com.arabook.arabook.storage.domain.review.entity;
 
+import static com.arabook.arabook.common.exception.review.ReviewExceptionType.*;
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
@@ -14,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import com.arabook.arabook.common.exception.review.ReviewException;
 import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.common.entity.BaseTimeEntity;
 import com.arabook.arabook.storage.domain.member.entity.Member;
@@ -66,8 +69,7 @@ public class Review extends BaseTimeEntity {
 
 	private void validateReadDate(LocalDate readStartDate, LocalDate readEndDate) {
 		if (readStartDate.isAfter(readEndDate)) {
-			// TODO: 서비스 custom exception으로 변경
-			throw new IllegalArgumentException("읽기 시작한 날짜가 다 읽은 날짜보다 늦을 수 없습니다.");
+			throw new ReviewException(INVALID_READ_START_DATE);
 		}
 	}
 }
