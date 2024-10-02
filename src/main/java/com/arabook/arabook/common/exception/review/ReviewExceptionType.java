@@ -9,19 +9,19 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ReviewExceptionType implements ExceptionType {
-	INVALID_READ_START_DATE(HttpStatus.BAD_REQUEST, "책 읽기 시작 날짜가 올바르지 않습니다."),
-	;
+  INVALID_READ_START_DATE(HttpStatus.BAD_REQUEST, "책 읽기 시작 날짜가 올바르지 않습니다."),
+  ;
 
-	private final HttpStatus status;
-	private final String message;
+  private final HttpStatus status;
+  private final String message;
 
-	@Override
-	public HttpStatus status() {
-		return this.status;
-	}
+  @Override
+  public HttpStatus status() {
+    return this.status;
+  }
 
-	@Override
-	public String message() {
-		return this.message;
-	}
+  @Override
+  public String message() {
+    return this.message;
+  }
 }

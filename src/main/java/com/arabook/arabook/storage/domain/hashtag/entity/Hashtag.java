@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "hashtags")
 public class Hashtag {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long hashtagId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long hashtagId;
 
-	@NotNull private String name;
+  @NotNull private String name;
 }

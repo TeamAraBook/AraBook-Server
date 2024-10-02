@@ -18,11 +18,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "monthly_best_sellers")
 public class BestSeller {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bestSellerId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long bestSellerId;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "book_isbn", referencedColumnName = "isbn", unique = true)
-	private Book book;
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "book_isbn", referencedColumnName = "isbn", unique = true)
+  private Book book;
 }

@@ -5,5 +5,5 @@ import java.util.List;
 import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
 
 public interface BookCustomRepository {
-	List<BookResponse> findBooksBySearch(String searchKeyword);
+  List<BookResponse> findBooksBySearch(String searchKeyword);
 }

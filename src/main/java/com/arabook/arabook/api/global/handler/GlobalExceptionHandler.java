@@ -24,65 +24,65 @@ import lombok.extern.slf4j.Slf4j;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-	@ExceptionHandler(ClientException.class)
-	public ResponseEntity<ResponseTemplate> handleCustomException(ClientException ex) {
-		return ResponseEntity.status(ex.getExceptionType().status())
-				.body(ResponseTemplate.error(ex.getExceptionType()));
-	}
+  @ExceptionHandler(ClientException.class)
+  public ResponseEntity<ResponseTemplate> handleCustomException(ClientException ex) {
+    return ResponseEntity.status(ex.getExceptionType().status())
+        .body(ResponseTemplate.error(ex.getExceptionType()));
+  }
 
-	@ExceptionHandler(BusinessException.class)
-	public ResponseEntity<ResponseTemplate> handleCustomException(BusinessException ex) {
-		log.error(
-				"🚨BusinessException occurred: {} 🚨\n{}", ex.getMessage(), getStackTraceAsString(ex));
-		return ResponseEntity.status(ex.getExceptionType().status())
-				.body(ResponseTemplate.error(ex.getExceptionType()));
-	}
+  @ExceptionHandler(BusinessException.class)
+  public ResponseEntity<ResponseTemplate> handleCustomException(BusinessException ex) {
+    log.error(
+        "🚨BusinessException occurred: {} 🚨\n{}", ex.getMessage(), getStackTraceAsString(ex));
+    return ResponseEntity.status(ex.getExceptionType().status())
+        .body(ResponseTemplate.error(ex.getExceptionType()));
+  }
 
-	@ExceptionHandler(RuntimeException.class)
-	public ResponseEntity<ResponseTemplate> handleServerException(RuntimeException ex) {
-		log.error(
-				"🚨 InternalException occurred: {} 🚨\n{}", ex.getMessage(), getStackTraceAsString(ex));
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-				.body(ResponseTemplate.error(INTERNAL_SERVER_ERROR));
-	}
+  @ExceptionHandler(RuntimeException.class)
+  public ResponseEntity<ResponseTemplate> handleServerException(RuntimeException ex) {
+    log.error(
+        "🚨 InternalException occurred: {} 🚨\n{}", ex.getMessage(), getStackTraceAsString(ex));
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body(ResponseTemplate.error(INTERNAL_SERVER_ERROR));
+  }
 
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public ResponseEntity<ResponseTemplate> handleNotFoundException(NoHandlerFoundException ex) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseTemplate.error(NOT_FOUND_PATH));
-	}
+  @ExceptionHandler(NoHandlerFoundException.class)
+  public ResponseEntity<ResponseTemplate> handleNotFoundException(NoHandlerFoundException ex) {
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseTemplate.error(NOT_FOUND_PATH));
+  }
 
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<ResponseTemplate> handleValidationError(
-			MethodArgumentNotValidException ex) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(ResponseTemplate.error(INVALID_INPUT_VALUE));
-	}
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public ResponseEntity<ResponseTemplate> handleValidationError(
+      MethodArgumentNotValidException ex) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body(ResponseTemplate.error(INVALID_INPUT_VALUE));
+  }
 
-	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	public ResponseEntity<ResponseTemplate> handleMethodArgumentTypeMismatchException(
-			MethodArgumentTypeMismatchException ex) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(ResponseTemplate.error(INVALID_REQUEST_PARAM_TYPE));
-	}
+  @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+  public ResponseEntity<ResponseTemplate> handleMethodArgumentTypeMismatchException(
+      MethodArgumentTypeMismatchException ex) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body(ResponseTemplate.error(INVALID_REQUEST_PARAM_TYPE));
+  }
 
-	@ExceptionHandler(MissingServletRequestParameterException.class)
-	public ResponseEntity<ResponseTemplate> handleMissingServletRequestParameterException(
-			MissingServletRequestParameterException ex) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(ResponseTemplate.error(NOT_NULL_REQUEST_PARAM));
-	}
+  @ExceptionHandler(MissingServletRequestParameterException.class)
+  public ResponseEntity<ResponseTemplate> handleMissingServletRequestParameterException(
+      MissingServletRequestParameterException ex) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body(ResponseTemplate.error(NOT_NULL_REQUEST_PARAM));
+  }
 
-	@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-	public ResponseEntity<ResponseTemplate> handleHttpMediaTypeNotSupportedException(
-			HttpMediaTypeNotSupportedException ex) {
-		return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-				.body(ResponseTemplate.error(INVALID_JSON_TYPE));
-	}
+  @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+  public ResponseEntity<ResponseTemplate> handleHttpMediaTypeNotSupportedException(
+      HttpMediaTypeNotSupportedException ex) {
+    return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+        .body(ResponseTemplate.error(INVALID_JSON_TYPE));
+  }
 
-	private String getStackTraceAsString(Exception ex) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		ex.printStackTrace(pw);
-		return sw.toString();
-	}
+  private String getStackTraceAsString(Exception ex) {
+    StringWriter sw = new StringWriter();
+    PrintWriter pw = new PrintWriter(sw);
+    ex.printStackTrace(pw);
+    return sw.toString();
+  }
 }

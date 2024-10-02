@@ -32,44 +32,44 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "reviews")
 public class Review extends BaseTimeEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long reviewId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long reviewId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "reviewer_id")
-	private Member reviwer;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "reviewer_id")
+  private Member reviwer;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "book_id")
-	private Book book;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "book_id")
+  private Book book;
 
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private ReviewTag reviewTag;
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private ReviewTag reviewTag;
 
-	@NotNull private LocalDate readStartDate;
+  @NotNull private LocalDate readStartDate;
 
-	@NotNull private LocalDate readEndDate;
+  @NotNull private LocalDate readEndDate;
 
-	@Builder
-	private Review(
-			Member reviwer,
-			Book book,
-			ReviewTag reviewTag,
-			LocalDate readStartDate,
-			LocalDate readEndDate) {
-		this.reviwer = reviwer;
-		this.book = book;
-		this.reviewTag = reviewTag;
-		validateReadDate(readStartDate, readEndDate);
-		this.readStartDate = readStartDate;
-		this.readEndDate = readEndDate;
-	}
+  @Builder
+  private Review(
+      Member reviwer,
+      Book book,
+      ReviewTag reviewTag,
+      LocalDate readStartDate,
+      LocalDate readEndDate) {
+    this.reviwer = reviwer;
+    this.book = book;
+    this.reviewTag = reviewTag;
+    validateReadDate(readStartDate, readEndDate);
+    this.readStartDate = readStartDate;
+    this.readEndDate = readEndDate;
+  }
 
-	private void validateReadDate(LocalDate readStartDate, LocalDate readEndDate) {
-		if (readStartDate.isAfter(readEndDate)) {
-			throw new ReviewException(INVALID_READ_START_DATE);
-		}
-	}
+  private void validateReadDate(LocalDate readStartDate, LocalDate readEndDate) {
+    if (readStartDate.isAfter(readEndDate)) {
+      throw new ReviewException(INVALID_READ_START_DATE);
+    }
+  }
 }

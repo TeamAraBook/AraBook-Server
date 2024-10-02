@@ -15,11 +15,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class BookServiceImpl implements BookService {
-	private final BookRepository bookRepository;
+  private final BookRepository bookRepository;
 
-	@Override
-	public BooksResponse getBooksBySearch(final String searchKeyword) {
-		final List<BookResponse> bookResponses = bookRepository.findBooksBySearch(searchKeyword);
-		return BooksResponse.of(bookResponses.size(), bookResponses);
-	}
+  @Override
+  public BooksResponse getBooksBySearch(final String searchKeyword) {
+    final List<BookResponse> bookResponses = bookRepository.findBooksBySearch(searchKeyword);
+    return BooksResponse.of(bookResponses.size(), bookResponses);
+  }
 }

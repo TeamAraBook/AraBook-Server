@@ -9,19 +9,19 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum BookSuccessType implements SuccessType {
-	// 200 OK
-	GET_BOOKS_BY_SEARCH(HttpStatus.OK, "검색 결과를 성공적으로 조회하였습니다");
+  // 200 OK
+  GET_BOOKS_BY_SEARCH(HttpStatus.OK, "검색 결과를 성공적으로 조회하였습니다");
 
-	private final HttpStatus status;
-	private final String message;
+  private final HttpStatus status;
+  private final String message;
 
-	@Override
-	public HttpStatus status() {
-		return this.status;
-	}
+  @Override
+  public HttpStatus status() {
+    return this.status;
+  }
 
-	@Override
-	public String message() {
-		return this.message;
-	}
+  @Override
+  public String message() {
+    return this.message;
+  }
 }
