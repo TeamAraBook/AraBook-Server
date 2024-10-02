@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -22,7 +23,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @Table(name = "daily_book_id_recommendations")
 public class AIRecommendation {
-	@Id @GeneratedValue private Long dailyBookIdRecommendationId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long dailyBookIdRecommendationId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
