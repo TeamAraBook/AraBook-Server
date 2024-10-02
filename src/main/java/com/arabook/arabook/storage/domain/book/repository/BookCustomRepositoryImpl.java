@@ -1,11 +1,24 @@
 package com.arabook.arabook.storage.domain.book.repository;
 
+import static com.arabook.arabook.common.exception.book.BookExceptionType.*;
+
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
+import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
 import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
+import com.arabook.arabook.api.book.controller.dto.response.CategoryResponse;
+import com.arabook.arabook.api.book.controller.dto.response.HashTagResponse;
+import com.arabook.arabook.common.exception.book.BookException;
+import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.book.entity.QBook;
+import com.arabook.arabook.storage.domain.book.entity.QBookCategoryMapping;
+import com.arabook.arabook.storage.domain.book.entity.QBookHashtagMapping;
+import com.arabook.arabook.storage.domain.category.entity.QCategory;
+import com.arabook.arabook.storage.domain.hashtag.entity.QHashtag;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -34,5 +47,46 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         .from(book)
         .where(builder)
         .fetch();
+  }
+
+  @Override
+  public BookDetailResponse findBookDetail(Long bookId) {
+    QBook book = QBook.book;
+    QCategory category = QCategory.category;
+    QHashtag hashtag = QHashtag.hashtag;
+    QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
+    QBookHashtagMapping bookHashtagMapping = QBookHashtagMapping.bookHashtagMapping;
+
+    // Book 엔티티를 조회
+    Book foundBook =
+        Optional.ofNullable(queryFactory.selectFrom(book).where(book.bookId.eq(bookId)).fetchOne())
+            .orElseThrow(() -> new BookException(BOOK_NOT_FOUND));
+
+    // 카테고리 리스트 조회
+    List<CategoryResponse> categories =
+        queryFactory
+            .select(
+                Projections.constructor(CategoryResponse.class, category.categoryId, category.name))
+            .from(bookCategoryMapping)
+            .leftJoin(category)
+            .on(bookCategoryMapping.category.categoryId.eq(category.categoryId))
+            .where(bookCategoryMapping.book.bookId.eq(bookId))
+            .fetch();
+
+    // 해시태그 리스트 조회
+    List<HashTagResponse> hashtags =
+        queryFactory
+            .select(Projections.constructor(HashTagResponse.class, hashtag.hashtagId, hashtag.name))
+            .from(bookHashtagMapping)
+            .leftJoin(hashtag)
+            .on(bookHashtagMapping.hashtag.hashtagId.eq(hashtag.hashtagId))
+            .where(bookHashtagMapping.book.bookId.eq(bookId))
+            .fetch();
+
+    // 카테고리와 해시태그가 없으면 빈 리스트로 처리
+    return BookDetailResponse.of(
+        foundBook,
+        categories.isEmpty() ? Collections.emptyList() : categories,
+        hashtags.isEmpty() ? Collections.emptyList() : hashtags);
   }
 }
