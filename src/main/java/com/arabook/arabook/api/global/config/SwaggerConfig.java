@@ -20,6 +20,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
     },
     servers = {
       @Server(url = "http://localhost:8080", description = "local server"),
+      @Server(url = "https://api.arabook.p-e.kr", description = "dev server")
     })
 @SecuritySchemes({
   @SecurityScheme(
