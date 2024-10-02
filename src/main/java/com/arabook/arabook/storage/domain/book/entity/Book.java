@@ -1,5 +1,7 @@
 package com.arabook.arabook.storage.domain.book.entity;
 
+import static com.arabook.arabook.common.exception.book.BookExceptionType.*;
+
 import java.time.Year;
 
 import jakarta.persistence.Column;
@@ -9,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+
+import com.arabook.arabook.common.exception.book.BookException;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -59,9 +63,8 @@ public class Book {
 	}
 
 	private String validateIsbn(String isbn) {
-		// TODO:: ISBN 유효성 검사에 대한 예외 customException으로 변경
 		if (isbn.length() != 13) {
-			throw new IllegalArgumentException("ISBN은 13자리여야 합니다.");
+			throw new BookException(INVALID_BOOK_ISBN);
 		}
 		return isbn;
 	}
