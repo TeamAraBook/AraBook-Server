@@ -26,5 +26,5 @@ public class BestSeller {
   @JoinColumn(name = "book_isbn", referencedColumnName = "isbn", unique = true)
   private Book book;
 
-  private int rank;
+  private int bookRank;
 }
