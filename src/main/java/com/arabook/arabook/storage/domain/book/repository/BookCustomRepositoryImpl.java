@@ -14,6 +14,7 @@ import com.arabook.arabook.api.book.controller.dto.response.CategoryResponse;
 import com.arabook.arabook.api.book.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.common.exception.book.BookException;
 import com.arabook.arabook.storage.domain.book.entity.Book;
+import com.arabook.arabook.storage.domain.book.entity.QBestSeller;
 import com.arabook.arabook.storage.domain.book.entity.QBook;
 import com.arabook.arabook.storage.domain.book.entity.QBookCategoryMapping;
 import com.arabook.arabook.storage.domain.book.entity.QBookHashtagMapping;
@@ -30,6 +31,8 @@ import lombok.RequiredArgsConstructor;
 public class BookCustomRepositoryImpl implements BookCustomRepository {
 
   private final JPAQueryFactory queryFactory;
+
+  private static final int BEST_SELLER_LIMIT = 18;
 
   @Override
   public List<BookResponse> findBooksBySearch(final String keyword) {
@@ -88,5 +91,20 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         foundBook,
         categories.isEmpty() ? Collections.emptyList() : categories,
         hashtags.isEmpty() ? Collections.emptyList() : hashtags);
+  }
+
+  public List<BookResponse> findBestSellerBooks() {
+    QBook book = QBook.book;
+    QBestSeller bestSeller = QBestSeller.bestSeller;
+    return queryFactory
+        .select(
+            Projections.constructor(
+                BookResponse.class, book.bookId, book.coverUrl, book.title, book.author))
+        .from(book)
+        .join(bestSeller)
+        .on(book.isbn.eq(bestSeller.book.isbn))
+        .orderBy(bestSeller.rank.asc())
+        .limit(BEST_SELLER_LIMIT)
+        .fetch();
   }
 }
