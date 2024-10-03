@@ -9,4 +9,6 @@ public interface BookCustomRepository {
   List<BookResponse> findBooksBySearch(String keyword);
 
   BookDetailResponse findBookDetail(Long bookId);
+
+  List<BookResponse> findBestSellerBooks();
 }
