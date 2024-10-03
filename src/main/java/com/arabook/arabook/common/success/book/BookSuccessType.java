@@ -11,7 +11,8 @@ import lombok.RequiredArgsConstructor;
 public enum BookSuccessType implements SuccessType {
   // 200 OK
   GET_BOOKS_BY_SEARCH(HttpStatus.OK, "검색 결과를 조회하였습니다"),
-  GET_BOOK_DETAIL(HttpStatus.OK, "책 상세 정보를 조회하였습니다");
+  GET_BOOK_DETAIL(HttpStatus.OK, "책 상세 정보를 조회하였습니다"),
+  GET_BEST_SELLER_BOOKS(HttpStatus.OK, "베스트셀러 목록을 조회하였습니다");
 
   private final HttpStatus status;
   private final String message;
