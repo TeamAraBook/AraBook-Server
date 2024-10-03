@@ -25,4 +25,6 @@ public class BestSeller {
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "book_isbn", referencedColumnName = "isbn", unique = true)
   private Book book;
+
+  private int rank;
 }
