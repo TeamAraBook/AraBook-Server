@@ -103,7 +103,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         .from(book)
         .join(bestSeller)
         .on(book.isbn.eq(bestSeller.book.isbn))
-        .orderBy(bestSeller.rank.asc())
+        .orderBy(bestSeller.bookRank.asc())
         .limit(BEST_SELLER_LIMIT)
         .fetch();
   }
