@@ -28,7 +28,7 @@ public class JwtTokenValidatorImpl implements JwtTokenValidator {
   }
 
   @Override
-  public void isValidToken(String token) {
+  public void validateToken(String token) {
     try {
       getVerifier().verify(token);
     } catch (TokenExpiredException e) {
