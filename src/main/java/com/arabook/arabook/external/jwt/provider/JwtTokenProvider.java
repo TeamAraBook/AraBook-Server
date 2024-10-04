@@ -5,5 +5,5 @@ import java.util.List;
 public interface JwtTokenProvider {
   String createToken(String memberId, List<String> roles);
 
-  String createRefreshToken(final Long memberId);
+  String createRefreshToken();
 }
