@@ -12,9 +12,9 @@ import com.arabook.arabook.storage.redis.repository.dto.RefreshTokenDTO;
 
 @Repository
 public interface RedisTokenRepository extends CrudRepository<RefreshTokenDTO, String> {
-  Optional<RefreshTokenDTO> findByMemberId(String memberId);
+  Optional<RefreshTokenDTO> findByMemberId(final String memberId);
 
-  default RefreshTokenDTO findByMemberIdOrElseThrowException(String memberId) {
+  default RefreshTokenDTO findByMemberIdOrElseThrowException(final String memberId) {
     return findByMemberId(memberId).orElseThrow(() -> new AuthException(UNAUTHORIZED_TOKEN));
   }
 }

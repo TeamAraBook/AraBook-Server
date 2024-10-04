@@ -28,7 +28,7 @@ public class JwtTokenValidatorImpl implements JwtTokenValidator {
   }
 
   @Override
-  public void validateToken(String token) {
+  public void validateToken(final String token) {
     try {
       getVerifier().verify(token);
     } catch (TokenExpiredException e) {
@@ -39,7 +39,7 @@ public class JwtTokenValidatorImpl implements JwtTokenValidator {
   }
 
   @Override
-  public Claim getClaim(String token, String claim) {
+  public Claim getClaim(final String token, final String claim) {
     return getVerifier().verify(token).getClaim(claim);
   }
 }
