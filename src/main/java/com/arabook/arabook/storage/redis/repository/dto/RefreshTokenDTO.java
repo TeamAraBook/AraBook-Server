@@ -16,12 +16,12 @@ public class RefreshTokenDTO {
 
   private String refreshToken;
 
-  public void updateRefreshToken(String refreshToken) {
+  public void updateRefreshToken(final String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
   @Builder
-  private RefreshTokenDTO(String memberId, String refreshToken) {
+  private RefreshTokenDTO(final String memberId, final String refreshToken) {
     this.memberId = memberId;
     this.refreshToken = refreshToken;
   }

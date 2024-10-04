@@ -26,7 +26,7 @@ public class JwtTokenProviderImpl implements JwtTokenProvider {
   private static final String ROLE_CLAIM = "roles";
 
   @Override
-  public String createAccessToken(String memberId, List<String> roles) {
+  public String createAccessToken(final String memberId, final List<String> roles) {
     Date now = new Date();
 
     return JWT.create()
