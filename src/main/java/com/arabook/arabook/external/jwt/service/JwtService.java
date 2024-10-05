@@ -15,4 +15,8 @@ public interface JwtService {
   String extractAccessToken(HttpServletRequest request);
 
   String extractRefreshToken(HttpServletRequest request);
+
+  String getMemberIdFromAccessToken(String accessToken);
+
+  List<String> getRolesFromAccessToken(String accessToken);
 }
