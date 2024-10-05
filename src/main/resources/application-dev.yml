@@ -23,8 +23,8 @@ spring:
     open-in-view: false
   data:
     redis:
-      host: {DEV_REDIS_HOST}
-      port: {DEV_REDIS_PORT}
+      host: ${DEV_REDIS_HOST}
+      port: ${DEV_REDIS_PORT}
 
 jwt:
   secretKey: ${JWT_SECRET_KEY}
