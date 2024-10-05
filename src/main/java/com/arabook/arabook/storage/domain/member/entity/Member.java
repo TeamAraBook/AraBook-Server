@@ -60,4 +60,9 @@ public class Member extends BaseTimeEntity {
     this.age = 999;
     this.role = Role.GUEST;
   }
+
+  public void updateOnboardingInfo(final Gender gender, final int age) {
+    this.gender = gender;
+    this.age = age;
+  }
 }
