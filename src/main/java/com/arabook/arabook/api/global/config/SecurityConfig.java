@@ -39,7 +39,8 @@ public class SecurityConfig {
     "/images/**",
     "/js/**",
     "/h2-console/**",
-    "/books/**"
+    "/books/**",
+    "/recommend/**"
   };
 
   @Value("${spring.web.origin.server}")
