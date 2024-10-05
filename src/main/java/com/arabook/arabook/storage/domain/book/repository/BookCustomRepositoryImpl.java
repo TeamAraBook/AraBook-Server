@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
 import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
-import com.arabook.arabook.api.book.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
+import com.arabook.arabook.api.hashtag.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.common.exception.book.BookException;
 import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.book.entity.QBestSeller;
