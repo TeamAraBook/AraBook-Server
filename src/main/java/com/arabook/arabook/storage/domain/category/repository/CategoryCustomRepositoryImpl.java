@@ -21,7 +21,7 @@ public class CategoryCustomRepositoryImpl implements CategoryCustomRepository {
     QCategory category = QCategory.category;
 
     return queryFactory
-        .select(Projections.fields(CategoryResponse.class, category.categoryId, category.name))
+        .select(Projections.constructor(CategoryResponse.class, category.categoryId, category.name))
         .from(category)
         .orderBy(category.name.asc())
         .fetch();
