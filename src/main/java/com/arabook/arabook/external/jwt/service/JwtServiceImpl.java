@@ -46,7 +46,8 @@ public class JwtServiceImpl implements JwtService {
     String accessToken = jwtTokenProvider.createAccessToken(memberId, roles);
 
     boolean isServiceMember =
-        roles.stream().anyMatch(role -> role.equals(Role.USER) || role.equals(Role.GUEST));
+        roles.stream()
+            .anyMatch(role -> role.equals(Role.USER.name()) || role.equals(Role.GUEST.name()));
 
     if (isServiceMember) {
       String refreshToken = jwtTokenProvider.createRefreshToken();
