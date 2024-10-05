@@ -4,6 +4,8 @@ spring:
   web:
     resources:
       add-mappings: false
+    origin:
+      server: ${SERVER_ORIGIN}
 
   datasource:
     driver-class-name: org.h2.Driver
