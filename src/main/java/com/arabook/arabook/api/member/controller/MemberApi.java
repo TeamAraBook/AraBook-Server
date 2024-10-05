@@ -39,5 +39,5 @@ public interface MemberApi {
       })
   @Operation(summary = "온보딩: 회원가입 이후 온보딩 요청", description = "온보딩 정보를 받습니다")
   ResponseEntity<ResponseTemplate> onboarding(
-      @Schema() MemberOnboardingRequest request, @Schema(hidden = true) Long memberId);
+      MemberOnboardingRequest request, @Schema(hidden = true) Long memberId);
 }
