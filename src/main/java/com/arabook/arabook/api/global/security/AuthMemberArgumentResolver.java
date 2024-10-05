@@ -11,6 +11,8 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 @Component
 public class AuthMemberArgumentResolver implements HandlerMethodArgumentResolver {
+  private static final String ANONYMOUS_USER = "anonymousUser";
+
   @Override
   public boolean supportsParameter(MethodParameter parameter) {
     boolean hasAuthMemberAnnotation = parameter.getParameterAnnotation(AuthMember.class) != null;
@@ -26,7 +28,7 @@ public class AuthMemberArgumentResolver implements HandlerMethodArgumentResolver
       WebDataBinderFactory binderFactory) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-    boolean isNotAuthenticatedMember = authentication == null || !authentication.isAuthenticated();
+    boolean isNotAuthenticatedMember = authentication.getPrincipal().equals(ANONYMOUS_USER);
     if (isNotAuthenticatedMember) {
       return null;
     }
