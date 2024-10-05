@@ -23,3 +23,12 @@ spring:
     redis:
       host: {PROD_REDIS_HOST}
       port: {PROD_REDIS_PORT}
+
+jwt:
+  secretKey: ${JWT_SECRET_KEY}
+  access:
+    expiration: ${JWT_ACCESS_TOKEN_EXPIRE_TIME}
+    header: ${JWT_ACCESS_TOKEN_HEADER}
+  refresh:
+    expiration: ${JWT_REFRESH_TOKEN_EXPIRE_TIME}
+    header: ${JWT_REFRESH_TOKEN_HEADER}
