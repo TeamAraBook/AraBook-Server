@@ -60,12 +60,10 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
     QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
     QBookHashtagMapping bookHashtagMapping = QBookHashtagMapping.bookHashtagMapping;
 
-    // Book 엔티티를 조회
     Book foundBook =
         Optional.ofNullable(queryFactory.selectFrom(book).where(book.bookId.eq(bookId)).fetchOne())
             .orElseThrow(() -> new BookException(BOOK_NOT_FOUND));
 
-    // 카테고리 리스트 조회
     List<CategoryResponse> categories =
         queryFactory
             .select(
@@ -76,7 +74,6 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
             .where(bookCategoryMapping.book.bookId.eq(bookId))
             .fetch();
 
-    // 해시태그 리스트 조회
     List<HashTagResponse> hashtags =
         queryFactory
             .select(Projections.constructor(HashTagResponse.class, hashtag.hashtagId, hashtag.name))
