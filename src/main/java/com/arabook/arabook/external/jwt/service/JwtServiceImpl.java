@@ -69,7 +69,7 @@ public class JwtServiceImpl implements JwtService {
 
     validateRefreshTokenMatch(refreshToken, foundRefreshToken);
 
-    List<String> roles = getRolesFromRefreshToken(refreshToken);
+    List<String> roles = getRolesFromAccessToken(accessToken);
 
     String newAccessToken = jwtTokenProvider.createAccessToken(memberId, roles);
     String newRefreshToken = jwtTokenProvider.createRefreshToken();
@@ -79,7 +79,8 @@ public class JwtServiceImpl implements JwtService {
     return IssueTokenResponse.of(newAccessToken, newRefreshToken);
   }
 
-  private String getMemberIdFromAccessToken(final String accessToken) {
+  @Override
+  public String getMemberIdFromAccessToken(final String accessToken) {
     return jwtTokenValidator.getClaim(accessToken, ID_CLAIM).asString();
   }
 
@@ -94,7 +95,8 @@ public class JwtServiceImpl implements JwtService {
     }
   }
 
-  private List<String> getRolesFromRefreshToken(final String accessToken) {
+  @Override
+  public List<String> getRolesFromAccessToken(final String accessToken) {
     return jwtTokenValidator.getClaim(accessToken, ROLE_CLAIM).asList(String.class);
   }
 
@@ -119,7 +121,7 @@ public class JwtServiceImpl implements JwtService {
     return Optional.ofNullable(request.getHeader(accessHeader))
         .filter(accessToken -> accessToken.startsWith(BEARER))
         .map(accessToken -> accessToken.replace(BEARER, ""))
-        .orElseThrow(() -> new AuthException(INVALID_TOKEN));
+        .orElseThrow(() -> new AuthException(INVALID_TOKEN_HEADER));
   }
 
   @Override
