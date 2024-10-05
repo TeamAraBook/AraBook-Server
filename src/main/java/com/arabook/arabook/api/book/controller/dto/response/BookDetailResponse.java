@@ -3,6 +3,7 @@ package com.arabook.arabook.api.book.controller.dto.response;
 import java.time.Year;
 import java.util.List;
 
+import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
 import com.arabook.arabook.storage.domain.book.entity.Book;
 
 import io.swagger.v3.oas.annotations.media.Schema;
