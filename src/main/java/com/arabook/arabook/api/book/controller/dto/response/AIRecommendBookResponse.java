@@ -2,6 +2,8 @@ package com.arabook.arabook.api.book.controller.dto.response;
 
 import java.util.List;
 
+import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(name = "AIRecommendBookResponse", description = "AI 추천 책 응답 DTO")
