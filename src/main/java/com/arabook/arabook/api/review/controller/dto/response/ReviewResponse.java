@@ -1,6 +1,9 @@
 package com.arabook.arabook.api.review.controller.dto.response;
 
 import java.time.LocalDate;
+import java.time.Period;
+
+import com.arabook.arabook.storage.domain.review.entity.enums.ReviewTag;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -13,4 +16,31 @@ public record ReviewResponse(
     @Schema(description = "책을 읽기 시작한 날", example = "2024-09-21") LocalDate readStartDate,
     @Schema(description = "책을 다 읽은 날", example = "2024-09-24") LocalDate readEndDate,
     @Schema(description = "기록 캐릭터 icon", example = "https://icon/1") String reviewTagIcon,
-    @Schema(description = "기록 캐릭터 color", example = "1FD068") String reviewTagColor) {}
+    @Schema(description = "기록 캐릭터 color", example = "1FD068") String reviewTagColor) {
+
+  public static ReviewResponse of(
+      long reviewId,
+      String coverUrl,
+      String title,
+      LocalDate readStartDate,
+      LocalDate readEndDate,
+      ReviewTag reviewTag) {
+    int readPeriod = getDayDiff(readStartDate, readEndDate);
+    String reviewTagIcon = reviewTag.getReviewTagIcon();
+    String reviewTagColor = reviewTag.getReviewTagColor();
+
+    return new ReviewResponse(
+        reviewId,
+        coverUrl,
+        title,
+        readPeriod,
+        readStartDate,
+        readEndDate,
+        reviewTagIcon,
+        reviewTagColor);
+  }
+
+  private static int getDayDiff(LocalDate start, LocalDate end) {
+    return Period.between(start, end).getDays();
+  }
+}
