@@ -46,6 +46,7 @@ public class Review extends BaseTimeEntity {
 
   @NotNull
   @Enumerated(EnumType.STRING)
+  @NotNull
   private ReviewTag reviewTag;
 
   @NotNull private LocalDate readStartDate;
