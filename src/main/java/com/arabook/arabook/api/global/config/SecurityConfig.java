@@ -26,7 +26,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-  public static final String[] AUTH_WHITELIST = {"/", "/error", "/favicon.ico", "/actuator/health"};
+  public static final String[] AUTH_WHITELIST = {
+    "/", "/error", "/favicon.ico", "/actuator/health", "recommend/best-seller"
+  };
 
   public static final String[] AUTH_WHITELIST_WILDCARD = {
     "/webjars/**",
@@ -40,8 +42,7 @@ public class SecurityConfig {
     "/js/**",
     "/h2-console/**",
     "/test/**",
-    "/books/**",
-    "/recommend/**",
+    "/books/**"
   };
 
   @Value("${spring.web.origin.server}")
