@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import com.arabook.arabook.api.review.controller.dto.request.CreateReviewRequest;
 import com.arabook.arabook.api.review.controller.dto.request.UpdateReviewRequest;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewDetailResponse;
+import com.arabook.arabook.api.review.controller.dto.response.ReviewIdResponse;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
@@ -25,7 +26,7 @@ public interface ReviewApi {
         @ApiResponse(responseCode = "404", description = "해당 책을 찾을 수 없습니다.")
       })
   @Operation(summary = "책 기록하기: 책 기록 생성 요청", description = "책 기록을 생성합니다.")
-  ResponseEntity<ResponseTemplate> createReview(CreateReviewRequest request);
+  ResponseEntity<ResponseTemplate<ReviewIdResponse>> createReview(CreateReviewRequest request);
 
   @ApiResponses(
       value = {
@@ -38,11 +39,15 @@ public interface ReviewApi {
   @ApiResponses(
       value = {
         @ApiResponse(responseCode = "200", description = "기록을 수정했습니다."),
-        @ApiResponse(responseCode = "400", description = "기록 수정 요청이 잘못되었습니다."),
+        @ApiResponse(
+            responseCode = "400",
+            description = "책 읽기 시작 날짜가 올바르지 않습니다. (책을 읽기 시작한 날짜가 다 읽은 날짜보다 늦을 경우)"),
+        @ApiResponse(responseCode = "400", description = "입력값이 올바르지 않습니다. (넘기는 필드가 조건에 부합하지 않는 경우"),
         @ApiResponse(responseCode = "404", description = "기록을 찾을 수 없습니다.")
       })
   @Operation(summary = "책 기록하기: 책 기록 수정 요청", description = "책 기록을 수정합니다.")
-  ResponseEntity<ResponseTemplate> updateReview(UpdateReviewRequest request);
+  ResponseEntity<ResponseTemplate<ReviewIdResponse>> updateReview(
+      UpdateReviewRequest request, Long memberId);
 
   @ApiResponses(
       value = {
