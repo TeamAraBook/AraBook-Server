@@ -38,7 +38,7 @@ public class Review extends BaseTimeEntity {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "reviewer_id")
-  private Member reviwer;
+  private Member reviewer;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "book_id")
@@ -57,13 +57,13 @@ public class Review extends BaseTimeEntity {
 
   @Builder
   private Review(
-      Member reviwer,
+      Member reviewer,
       Book book,
       String content,
       ReviewTag reviewTag,
       LocalDate readStartDate,
       LocalDate readEndDate) {
-    this.reviwer = reviwer;
+    this.reviewer = reviewer;
     this.book = book;
     this.content = content;
     this.reviewTag = reviewTag;
