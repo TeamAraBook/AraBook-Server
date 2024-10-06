@@ -1,7 +1,6 @@
 package com.arabook.arabook.api.global.filter;
 
 import static com.arabook.arabook.api.global.config.SecurityConfig.*;
-import static com.arabook.arabook.common.exception.auth.AuthExceptionType.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -36,49 +35,81 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final JwtTokenValidator jwtTokenValidator;
   private final JwtService jwtService;
 
+  private static final String AI_RECOMMEND_PATH = "/recommend/ai";
+  private static final int START_WILDCARD_INDEX = 0;
+  private static final int END_WILDCARD_INDEX = 3;
+
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
 
-    if (Arrays.stream(AUTH_WHITELIST)
-        .anyMatch(whiteUrl -> request.getRequestURI().equals(whiteUrl))) {
+    String requestUri = request.getRequestURI();
+
+    if (isWhitelisted(requestUri)) {
       filterChain.doFilter(request, response);
       return;
     }
 
-    if (Arrays.stream(AUTH_WHITELIST_WILDCARD)
-        .anyMatch(
-            whiteUrl ->
-                request.getRequestURI().startsWith(whiteUrl.substring(0, whiteUrl.length() - 3)))) {
-      filterChain.doFilter(request, response);
+    if (requestUri.equals(AI_RECOMMEND_PATH)) {
+      handleAIRecommendPath(request, response, filterChain);
       return;
     }
 
-    String accessToken = jwtService.extractAccessToken(request);
-    boolean isNotContainsAccessToken = accessToken == null;
-    if (isNotContainsAccessToken) {
-      filterChain.doFilter(request, response);
-      return;
-    }
+    handleTokenAuthentication(request, response, filterChain);
+  }
 
+  private boolean isWhitelisted(String requestUri) {
+    return Arrays.asList(AUTH_WHITELIST).contains(requestUri)
+        || Arrays.stream(AUTH_WHITELIST_WILDCARD)
+            .anyMatch(
+                whiteUrl ->
+                    requestUri.startsWith(
+                        whiteUrl.substring(
+                            START_WILDCARD_INDEX, whiteUrl.length() - END_WILDCARD_INDEX)));
+  }
+
+  private void handleAIRecommendPath(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws IOException, ServletException {
     try {
-      jwtTokenValidator.validateToken(accessToken);
+      authenticateRequest(request);
+    } catch (AuthException e) {
+      SecurityContextHolder.getContext().setAuthentication(createAnonymousAuthentication());
+    }
+    filterChain.doFilter(request, response);
+  }
 
-      String memberId = jwtService.getMemberIdFromAccessToken(accessToken);
-      List<String> roles = jwtService.getRolesFromAccessToken(accessToken);
-      Collection<? extends GrantedAuthority> authorities = getAuthoritiesFromList(roles);
-      MemberAuthentication memberAuthentication =
-          new MemberAuthentication(memberId, null, authorities);
+  private MemberAuthentication createAnonymousAuthentication() {
+    Collection<? extends GrantedAuthority> authorities =
+        List.of(new SimpleGrantedAuthority("ROLE_ANONYMOUS"));
+    return new MemberAuthentication("anonymousUser", null, authorities); // 익명 유저 생성
+  }
 
-      log.info("Authentication Principal : {}", memberAuthentication.getPrincipal());
-
-      SecurityContextHolder.getContext().setAuthentication(memberAuthentication);
+  private void handleTokenAuthentication(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws IOException, ServletException {
+    try {
+      authenticateRequest(request);
     } catch (AuthException e) {
       throw new AuthException(e.getExceptionType());
     }
-
     filterChain.doFilter(request, response);
+  }
+
+  private void authenticateRequest(HttpServletRequest request) {
+    String accessToken = jwtService.extractAccessToken(request);
+    jwtTokenValidator.validateToken(accessToken);
+
+    String memberId = jwtService.getMemberIdFromAccessToken(accessToken);
+    List<String> roles = jwtService.getRolesFromAccessToken(accessToken);
+    Collection<? extends GrantedAuthority> authorities = getAuthoritiesFromList(roles);
+    MemberAuthentication memberAuthentication =
+        new MemberAuthentication(memberId, null, authorities);
+
+    log.info("Authentication Principal : {}", memberAuthentication.getPrincipal());
+
+    SecurityContextHolder.getContext().setAuthentication(memberAuthentication);
   }
 
   private Collection<? extends GrantedAuthority> getAuthoritiesFromList(List<String> roles) {
