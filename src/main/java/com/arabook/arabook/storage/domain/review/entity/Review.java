@@ -44,6 +44,8 @@ public class Review extends BaseTimeEntity {
   @JoinColumn(name = "book_id")
   private Book book;
 
+  private String content;
+
   @NotNull
   @Enumerated(EnumType.STRING)
   @NotNull
@@ -57,11 +59,13 @@ public class Review extends BaseTimeEntity {
   private Review(
       Member reviwer,
       Book book,
+      String content,
       ReviewTag reviewTag,
       LocalDate readStartDate,
       LocalDate readEndDate) {
     this.reviwer = reviwer;
     this.book = book;
+    this.content = content;
     this.reviewTag = reviewTag;
     validateReadDate(readStartDate, readEndDate);
     this.readStartDate = readStartDate;
@@ -72,5 +76,14 @@ public class Review extends BaseTimeEntity {
     if (readStartDate.isAfter(readEndDate)) {
       throw new ReviewException(INVALID_READ_START_DATE);
     }
+  }
+
+  public void updateReview(
+      String content, ReviewTag reviewTag, LocalDate readStartDate, LocalDate readEndDate) {
+    validateReadDate(readStartDate, readEndDate);
+    this.content = content;
+    this.reviewTag = reviewTag;
+    this.readStartDate = readStartDate;
+    this.readEndDate = readEndDate;
   }
 }
