@@ -30,11 +30,12 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
-public class ReviewController {
+public class ReviewController implements ReviewApi {
   private final ReviewService reviewService;
 
   private static final String REVIEW_PATH = "/reviews";
 
+  @Override
   @PostMapping("")
   public ResponseEntity<ResponseTemplate<ReviewIdResponse>> createReview(
       @RequestBody @Valid final CreateReviewRequest request, @AuthMember final Long memberId) {
@@ -44,28 +45,33 @@ public class ReviewController {
         .body(ResponseTemplate.success(CREATE_REVIEW_SUCCESS, response));
   }
 
+  @Override
   @PutMapping("")
-  ResponseEntity<ResponseTemplate<ReviewIdResponse>> updateReview(
+  public ResponseEntity<ResponseTemplate<ReviewIdResponse>> updateReview(
       @RequestBody @Valid UpdateReviewRequest request, @AuthMember final Long memberId) {
     ReviewIdResponse response = reviewService.updateReview(request, memberId);
     return ResponseEntity.ok().body(ResponseTemplate.success(UPDATE_REVIEW_SUCCESS, response));
   }
 
+  @Override
   @GetMapping("")
-  ResponseEntity<ResponseTemplate<ReviewsResponse>> getReviews(@AuthMember final Long memberId) {
+  public ResponseEntity<ResponseTemplate<ReviewsResponse>> getReviews(
+      @AuthMember final Long memberId) {
     ReviewsResponse response = reviewService.getReviews(memberId);
     return ResponseEntity.ok().body(ResponseTemplate.success(GET_REVIEWS_SUCCESS, response));
   }
 
+  @Override
   @DeleteMapping("/{reviewId}")
-  ResponseEntity<ResponseTemplate> deleteReview(
+  public ResponseEntity<ResponseTemplate> deleteReview(
       @PathVariable final Long reviewId, @AuthMember final Long memberId) {
     reviewService.deleteReview(reviewId, memberId);
     return ResponseEntity.ok().body(ResponseTemplate.success(DELETE_REVIEW_SUCCESS));
   }
 
+  @Override
   @GetMapping("/{reviewId}")
-  ResponseEntity<ResponseTemplate<ReviewDetailResponse>> getReviewDetail(
+  public ResponseEntity<ResponseTemplate<ReviewDetailResponse>> getReviewDetail(
       @PathVariable final Long reviewId, @AuthMember final Long memberId) {
     ReviewDetailResponse response = reviewService.getReviewDetail(reviewId, memberId);
     return ResponseEntity.ok().body(ResponseTemplate.success(GET_REVIEW_DETAIL_SUCCESS, response));
