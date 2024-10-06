@@ -57,7 +57,7 @@ public interface ReviewApi {
   @Operation(summary = "책 기록하기: 책 기록 삭제 요청", description = "책 기록을 삭제합니다.")
   ResponseEntity<ResponseTemplate> deleteReview(Long reviewId);
 
-  @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "기록 목록을 조회했습니다.")})
+  @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "기록 목록 조회했습니다.")})
   @Operation(summary = "책 기록하기: 책 기록 목록 조회", description = "책 기록 목록을 조회합니다.")
-  ResponseEntity<ResponseTemplate<ReviewsResponse>> getReviews();
+  ResponseEntity<ResponseTemplate<ReviewsResponse>> getReviews(Long memberId);
 }
