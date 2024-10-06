@@ -2,6 +2,8 @@ package com.arabook.arabook.api.member.controller;
 
 import static com.arabook.arabook.common.success.member.MemberSuccessType.*;
 
+import jakarta.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,7 @@ public class MemberController implements MemberApi {
   @Override
   @PutMapping("/onboarding")
   public ResponseEntity<ResponseTemplate> onboarding(
-      @RequestBody final MemberOnboardingRequest request, @AuthMember final Long memberId) {
+      @RequestBody @Valid final MemberOnboardingRequest request, @AuthMember final Long memberId) {
     memberService.onboarding(request, memberId);
     return ResponseEntity.ok(ResponseTemplate.success(ONBOARDING_SUCCESS));
   }
