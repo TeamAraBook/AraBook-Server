@@ -17,7 +17,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public interface RecommendApi {
   @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "AI 추천 책 조회에 성공했습니다.")})
   @Operation(summary = "홈: AI 추천도서 ", description = "AI 추천도서를 조회합니다.")
-  ResponseEntity<ResponseTemplate<AIRecommendBookResponse>> getAIRecommendBook();
+  ResponseEntity<ResponseTemplate<AIRecommendBookResponse>> getAIRecommendBook(
+      @Schema(hidden = true) Long memberId);
 
   @ApiResponses(
       value = {
