@@ -1,11 +1,17 @@
 package com.arabook.arabook.api.review.service;
 
+import static com.arabook.arabook.storage.domain.member.entity.QMember.*;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.arabook.arabook.api.review.controller.dto.request.CreateReviewRequest;
 import com.arabook.arabook.api.review.controller.dto.request.UpdateReviewRequest;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewIdResponse;
+import com.arabook.arabook.api.review.controller.dto.response.ReviewResponse;
+import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
 import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.book.repository.BookRepository;
 import com.arabook.arabook.storage.domain.member.entity.Member;
@@ -30,7 +36,7 @@ public class ReviewServiceImpl implements ReviewService {
     Book book = bookRepository.findByBookIdOrThrow(request.bookId());
     Review review =
         Review.builder()
-            .reviwer(member)
+            .reviewer(member)
             .book(book)
             .content(request.content())
             .reviewTag(request.reviewTag())
@@ -50,5 +56,11 @@ public class ReviewServiceImpl implements ReviewService {
     review.updateReview(
         request.content(), request.reviewTag(), request.readStartDate(), request.readEndDate());
     return ReviewIdResponse.of(review.getReviewId());
+  }
+
+  @Override
+  public ReviewsResponse getReviews(Long memberId) {
+    List<ReviewResponse> reviews = reviewRepository.findReviewsByReviewerId(memberId);
+    return ReviewsResponse.of(reviews.size(), reviews);
   }
 }
