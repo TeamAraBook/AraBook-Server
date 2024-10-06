@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
+import com.arabook.arabook.api.book.controller.dto.response.AIRecommendBookResponse;
 import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
 import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
 import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
@@ -20,6 +21,7 @@ import com.arabook.arabook.storage.domain.book.entity.QBookCategoryMapping;
 import com.arabook.arabook.storage.domain.book.entity.QBookHashtagMapping;
 import com.arabook.arabook.storage.domain.category.entity.QCategory;
 import com.arabook.arabook.storage.domain.hashtag.entity.QHashtag;
+import com.arabook.arabook.storage.domain.member.entity.QAIRecommendation;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -33,6 +35,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
   private final JPAQueryFactory queryFactory;
 
   private static final int BEST_SELLER_LIMIT = 18;
+  private static final int BEST_SELLER_RANK_FIRST = 1;
 
   @Override
   public List<BookResponse> findBooksBySearch(final String keyword) {
@@ -64,15 +67,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         Optional.ofNullable(queryFactory.selectFrom(book).where(book.bookId.eq(bookId)).fetchOne())
             .orElseThrow(() -> new BookException(BOOK_NOT_FOUND));
 
-    List<CategoryResponse> categories =
-        queryFactory
-            .select(
-                Projections.constructor(CategoryResponse.class, category.categoryId, category.name))
-            .from(bookCategoryMapping)
-            .leftJoin(category)
-            .on(bookCategoryMapping.category.categoryId.eq(category.categoryId))
-            .where(bookCategoryMapping.book.bookId.eq(bookId))
-            .fetch();
+    List<CategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
 
     List<HashTagResponse> hashtags =
         queryFactory
@@ -90,6 +85,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         hashtags.isEmpty() ? Collections.emptyList() : hashtags);
   }
 
+  @Override
   public List<BookResponse> findBestSellerBooks() {
     QBook book = QBook.book;
     QBestSeller bestSeller = QBestSeller.bestSeller;
@@ -102,6 +98,67 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         .on(book.isbn.eq(bestSeller.book.isbn))
         .orderBy(bestSeller.bookRank.asc())
         .limit(BEST_SELLER_LIMIT)
+        .fetch();
+  }
+
+  @Override
+  public AIRecommendBookResponse findAIRecommendBookDefault() {
+    QBook book = QBook.book;
+    QBestSeller bestSeller = QBestSeller.bestSeller;
+    QCategory category = QCategory.category;
+    QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
+
+    Book foundBook =
+        queryFactory
+            .selectFrom(book)
+            .join(bestSeller)
+            .on(book.isbn.eq(bestSeller.book.isbn))
+            .where(bestSeller.bookRank.eq(BEST_SELLER_RANK_FIRST))
+            .fetchFirst();
+
+    List<CategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
+
+    return AIRecommendBookResponse.of(
+        foundBook.getBookId(),
+        foundBook.getCoverUrl(),
+        foundBook.getTitle(),
+        foundBook.getAuthor(),
+        categories);
+  }
+
+  @Override
+  public AIRecommendBookResponse findAIRecommendBook(final Long memberId) {
+    QBook book = QBook.book;
+    QAIRecommendation aiRecommendation = QAIRecommendation.aIRecommendation;
+    QCategory category = QCategory.category;
+    QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
+
+    Book foundBook =
+        queryFactory
+            .selectFrom(book)
+            .join(aiRecommendation)
+            .on(book.bookId.eq(aiRecommendation.book.bookId))
+            .where(aiRecommendation.member.memberId.eq(memberId))
+            .fetchFirst();
+
+    List<CategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
+
+    return AIRecommendBookResponse.of(
+        foundBook.getBookId(),
+        foundBook.getCoverUrl(),
+        foundBook.getTitle(),
+        foundBook.getAuthor(),
+        categories);
+  }
+
+  private List<CategoryResponse> getCategories(
+      QCategory category, QBookCategoryMapping bookCategoryMapping, Book foundBook) {
+    return queryFactory
+        .select(Projections.constructor(CategoryResponse.class, category.categoryId, category.name))
+        .from(bookCategoryMapping)
+        .leftJoin(category)
+        .on(bookCategoryMapping.category.categoryId.eq(category.categoryId))
+        .where(bookCategoryMapping.book.eq(foundBook))
         .fetch();
   }
 }
