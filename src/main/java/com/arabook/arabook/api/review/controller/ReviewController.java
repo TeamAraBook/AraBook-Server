@@ -7,7 +7,9 @@ import java.net.URI;
 import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,5 +54,12 @@ public class ReviewController {
   ResponseEntity<ResponseTemplate<ReviewsResponse>> getReviews(@AuthMember final Long memberId) {
     ReviewsResponse response = reviewService.getReviews(memberId);
     return ResponseEntity.ok().body(ResponseTemplate.success(GET_REVIEWS_SUCCESS, response));
+  }
+
+  @DeleteMapping("/{reviewId}")
+  ResponseEntity<ResponseTemplate> deleteReview(
+      @PathVariable final Long reviewId, @AuthMember final Long memberId) {
+    reviewService.deleteReview(reviewId, memberId);
+    return ResponseEntity.ok().body(ResponseTemplate.success(DELETE_REVIEW_SUCCESS));
   }
 }
