@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.arabook.arabook.api.global.security.AuthMember;
 import com.arabook.arabook.api.review.controller.dto.request.CreateReviewRequest;
 import com.arabook.arabook.api.review.controller.dto.request.UpdateReviewRequest;
+import com.arabook.arabook.api.review.controller.dto.response.ReviewDetailResponse;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewIdResponse;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
 import com.arabook.arabook.api.review.service.ReviewService;
@@ -61,5 +62,12 @@ public class ReviewController {
       @PathVariable final Long reviewId, @AuthMember final Long memberId) {
     reviewService.deleteReview(reviewId, memberId);
     return ResponseEntity.ok().body(ResponseTemplate.success(DELETE_REVIEW_SUCCESS));
+  }
+
+  @GetMapping("/{reviewId}")
+  ResponseEntity<ResponseTemplate<ReviewDetailResponse>> getReviewDetail(
+      @PathVariable final Long reviewId, @AuthMember final Long memberId) {
+    ReviewDetailResponse response = reviewService.getReviewDetail(reviewId, memberId);
+    return ResponseEntity.ok().body(ResponseTemplate.success(GET_REVIEW_DETAIL_SUCCESS, response));
   }
 }
