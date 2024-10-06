@@ -63,4 +63,11 @@ public class ReviewServiceImpl implements ReviewService {
     List<ReviewResponse> reviews = reviewRepository.findReviewsByReviewerId(memberId);
     return ReviewsResponse.of(reviews.size(), reviews);
   }
+
+  @Override
+  @Transactional
+  public void deleteReview(Long reviewId, Long memberId) {
+    Review review = reviewRepository.findByReviewIdAndReviewerIdOrThrow(reviewId, memberId);
+    reviewRepository.delete(review);
+  }
 }
