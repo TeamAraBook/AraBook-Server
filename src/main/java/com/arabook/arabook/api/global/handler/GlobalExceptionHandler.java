@@ -7,6 +7,7 @@ import java.io.StringWriter;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -77,6 +78,13 @@ public class GlobalExceptionHandler {
       HttpMediaTypeNotSupportedException ex) {
     return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
         .body(ResponseTemplate.error(INVALID_JSON_TYPE));
+  }
+
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  public ResponseEntity<ResponseTemplate> handleHttpMessageNotReadableException(
+      HttpMessageNotReadableException ex) {
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+        .body(ResponseTemplate.error(INVALID_INPUT_VALUE));
   }
 
   private String getStackTraceAsString(Exception ex) {
