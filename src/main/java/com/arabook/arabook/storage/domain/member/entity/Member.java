@@ -37,8 +37,6 @@ public class Member extends BaseTimeEntity {
   @Column(unique = true)
   private String socialPlatformId;
 
-  @NotNull
-  @Column(unique = true)
   private String email;
 
   @NotNull
