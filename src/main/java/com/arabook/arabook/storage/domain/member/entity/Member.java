@@ -39,6 +39,8 @@ public class Member extends BaseTimeEntity {
 
   private String email;
 
+  private String nickname;
+
   @NotNull
   @Enumerated(EnumType.STRING)
   private Gender gender;
