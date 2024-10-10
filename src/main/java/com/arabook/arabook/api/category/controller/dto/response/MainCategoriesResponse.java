@@ -11,7 +11,7 @@ public record MainCategoriesResponse(
             description = "대분류 카테고리 목록",
             example =
                 "[{ \"mainCategoryId\": 1, \"mainCategoryName\": \"로맨스\" }, { \"mainCategoryId\": 2, \"mainCategoryName\": \"판타지\" }]")
-        List<MainCategoryResponse> categories) {
+        List<MainCategoryResponse> mainCategories) {
   public static MainCategoriesResponse of(int totalCount, List<MainCategoryResponse> categories) {
     return new MainCategoriesResponse(totalCount, categories);
   }
