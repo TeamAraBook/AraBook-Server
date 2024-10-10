@@ -13,7 +13,7 @@ import com.arabook.arabook.storage.domain.category.entity.SubCategory;
 import com.arabook.arabook.storage.domain.category.repository.CategoryRepository;
 import com.arabook.arabook.storage.domain.member.entity.Member;
 import com.arabook.arabook.storage.domain.member.entity.MemberSubCategorySelection;
-import com.arabook.arabook.storage.domain.member.repository.MemberCategorySelectionRepository;
+import com.arabook.arabook.storage.domain.member.repository.MemberSubCategorySelectionRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,14 +21,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class MemberCategorySelectionServiceImpl implements MemberCategorySelectionService {
-  private final MemberCategorySelectionRepository memberCategorySelectionRepository;
+  private final MemberSubCategorySelectionRepository memberSubCategorySelectionRepository;
   private final CategoryRepository categoryRepository;
 
   @Override
   @Transactional
   public void selectCategories(Member member, List<Long> categoryIds) {
 
-    memberCategorySelectionRepository.deleteAllByMember(member);
+    memberSubCategorySelectionRepository.deleteAllByMember(member);
 
     List<SubCategory> categories = categoryRepository.findAllById(categoryIds);
 
@@ -47,6 +47,6 @@ public class MemberCategorySelectionServiceImpl implements MemberCategorySelecti
                 })
             .collect(Collectors.toList());
 
-    memberCategorySelectionRepository.saveAll(memberSubCategorySelections);
+    memberSubCategorySelectionRepository.saveAll(memberSubCategorySelections);
   }
 }
