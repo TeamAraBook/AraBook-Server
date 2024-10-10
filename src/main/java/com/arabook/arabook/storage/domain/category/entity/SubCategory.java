@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "categories")
-public class Category {
+@Table(name = "sub_categories")
+public class SubCategory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long categoryId;
