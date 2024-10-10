@@ -21,6 +21,6 @@ public class MemberServiceImpl implements MemberService {
   public void onboarding(final MemberOnboardingRequest request, final Long memberId) {
     Member member = memberRepository.findByMemberIdOrThrow(memberId);
     member.updateOnboardingInfo(request.gender(), request.age());
-    memberCategorySelectionSerivce.selectCategories(member, request.interestCategoryIds());
+    memberCategorySelectionSerivce.selectSubCategories(member, request.interestCategoryIds());
   }
 }

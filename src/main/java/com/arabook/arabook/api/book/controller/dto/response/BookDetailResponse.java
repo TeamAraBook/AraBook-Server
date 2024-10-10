@@ -3,7 +3,7 @@ package com.arabook.arabook.api.book.controller.dto.response;
 import java.time.Year;
 import java.util.List;
 
-import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
+import com.arabook.arabook.api.category.controller.dto.response.SubCategoryResponse;
 import com.arabook.arabook.api.hashtag.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.storage.domain.book.entity.Book;
 
@@ -18,11 +18,11 @@ public record BookDetailResponse(
     @Schema(description = "책 출판사", example = "출판사") String publisher,
     @Schema(description = "책 출판년도", example = "2021") Year publicationYear,
     @Schema(description = "책 설명", example = "책 설명") String description,
-    @Schema(description = "책 카테고리") List<CategoryResponse> categories,
+    @Schema(description = "책 카테고리") List<SubCategoryResponse> categories,
     @Schema(description = "책 해시태그") List<HashTagResponse> hashtags) {
   public static BookDetailResponse of(
       final Book book,
-      final List<CategoryResponse> categories,
+      final List<SubCategoryResponse> categories,
       final List<HashTagResponse> hashtags) {
     return new BookDetailResponse(
         book.getBookId(),
