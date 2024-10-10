@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "book_category_mappings")
-public class BookCategoryMapping {
+@Table(name = "book_sub_category_mappings")
+public class BookSubCategoryMapping {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long bookCategoryMappingId;
+  private Long bookSubCategoryMappingId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "book_id")
   private Book book;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "category_id")
+  @JoinColumn(name = "sub_category_id")
   private SubCategory subCategory;
 }
