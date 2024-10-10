@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import com.arabook.arabook.storage.domain.category.entity.Category;
+import com.arabook.arabook.storage.domain.category.entity.SubCategory;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,11 +31,11 @@ public class MemberCategorySelection {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
-  private Category category;
+  private SubCategory subCategory;
 
   @Builder
-  private MemberCategorySelection(Member member, Category category) {
+  private MemberCategorySelection(Member member, SubCategory subCategory) {
     this.member = member;
-    this.category = category;
+    this.subCategory = subCategory;
   }
 }

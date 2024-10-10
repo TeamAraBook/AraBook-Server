@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import com.arabook.arabook.storage.domain.category.entity.Category;
+import com.arabook.arabook.storage.domain.category.entity.SubCategory;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -30,5 +30,5 @@ public class BookCategoryMapping {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
-  private Category category;
+  private SubCategory subCategory;
 }
