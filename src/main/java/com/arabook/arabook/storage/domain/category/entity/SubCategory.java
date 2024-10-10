@@ -1,6 +1,7 @@
 package com.arabook.arabook.storage.domain.category.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,8 +23,9 @@ public class SubCategory {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long subCategoryId;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "main_category_id")
+  @NotNull
   private MainCategory mainCategory;
 
   @NotNull private String subCategoryName;
