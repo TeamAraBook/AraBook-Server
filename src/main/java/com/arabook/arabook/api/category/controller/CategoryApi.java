@@ -25,7 +25,7 @@ public interface CategoryApi {
                     schema =
                         @Schema(
                             example =
-                                "{\"code\": 200, \"message\": \"대분류 카테고리 조회에 성공했습니다\", \"data\": { \"totalCount\": 2, \"categories\": [ { \"categoryId\": 1, \"categoryName\": \"로맨스\" }, { \"categoryId\": 2, \"categoryName\": \"판타지\" }]}}")))
+                                "{\"code\": 200, \"message\": \"대분류 카테고리 조회에 성공했습니다\", \"data\": { \"totalCount\": 2, \"mainCategories\": [ { \"mainCategoryId\": 1, \"mainCategoryName\": \"로맨스\" }, { \"mainCategoryId\": 2, \"mainCategoryName\": \"판타지\" }]}}")))
       })
   @Operation(summary = "온보딩: 대분류 카테고리 리스트 조회", description = "책 대분류 카테고리를 조회합니다.")
   ResponseEntity<ResponseTemplate<MainCategoriesResponse>> getMainCategories();
