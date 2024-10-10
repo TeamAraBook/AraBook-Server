@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.arabook.arabook.storage.domain.member.entity.Member;
 
-public interface MemberCategorySelectionService {
+public interface MemberSubCategorySelectionService {
   void selectCategories(Member member, List<Long> categoryId);
 }

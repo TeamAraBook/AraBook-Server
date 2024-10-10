@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional(readOnly = true)
 public class MemberServiceImpl implements MemberService {
   private final MemberRepository memberRepository;
-  private final MemberCategorySelectionService memberCategorySelectionSerivce;
+  private final MemberSubCategorySelectionService memberCategorySelectionSerivce;
 
   @Override
   @Transactional

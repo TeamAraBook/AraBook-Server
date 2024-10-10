@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class MemberCategorySelectionServiceImpl implements MemberCategorySelectionService {
+public class MemberSubCategorySelectionServiceImpl implements MemberSubCategorySelectionService {
   private final MemberSubCategorySelectionRepository memberSubCategorySelectionRepository;
   private final CategoryRepository categoryRepository;
 
