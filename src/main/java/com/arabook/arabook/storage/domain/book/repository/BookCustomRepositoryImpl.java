@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.arabook.arabook.api.book.controller.dto.response.AIRecommendBookResponse;
 import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
 import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
-import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
+import com.arabook.arabook.api.category.controller.dto.response.SubCategoryResponse;
 import com.arabook.arabook.api.hashtag.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.common.exception.book.BookException;
 import com.arabook.arabook.storage.domain.book.entity.Book;
@@ -67,7 +67,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         Optional.ofNullable(queryFactory.selectFrom(book).where(book.bookId.eq(bookId)).fetchOne())
             .orElseThrow(() -> new BookException(BOOK_NOT_FOUND));
 
-    List<CategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
+    List<SubCategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
 
     List<HashTagResponse> hashtags =
         queryFactory
@@ -116,7 +116,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
             .where(bestSeller.bookRank.eq(BEST_SELLER_RANK_FIRST))
             .fetchFirst();
 
-    List<CategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
+    List<SubCategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
 
     return AIRecommendBookResponse.of(
         foundBook.getBookId(),
@@ -141,7 +141,7 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
             .where(aiRecommendation.member.memberId.eq(memberId))
             .fetchFirst();
 
-    List<CategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
+    List<SubCategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
 
     return AIRecommendBookResponse.of(
         foundBook.getBookId(),
@@ -151,12 +151,12 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
         categories);
   }
 
-  private List<CategoryResponse> getCategories(
+  private List<SubCategoryResponse> getCategories(
       QSubCategory category, QBookSubCategoryMapping bookCategoryMapping, Book foundBook) {
     return queryFactory
         .select(
             Projections.constructor(
-                CategoryResponse.class, category.subCategoryId, category.subCategoryName))
+                SubCategoryResponse.class, category.subCategoryId, category.subCategoryName))
         .from(bookCategoryMapping)
         .leftJoin(category)
         .on(bookCategoryMapping.subCategory.subCategoryId.eq(category.subCategoryId))
