@@ -24,6 +24,7 @@ public class AuthServiceImpl implements AuthService {
   private final AuthServiceProvider authServiceProvider;
 
   @Override
+  @Transactional
   public AuthResponse signUpOrLogin(AuthRequest request) {
     SocialAuthService authService = authServiceProvider.getAuthService(request.platformType());
     AuthMemberVO authMemberVO = authService.getUserInfo(request.socialToken());
