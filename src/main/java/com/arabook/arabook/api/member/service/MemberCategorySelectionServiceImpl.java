@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.arabook.arabook.common.exception.category.CategoryException;
-import com.arabook.arabook.storage.domain.category.entity.Category;
+import com.arabook.arabook.storage.domain.category.entity.SubCategory;
 import com.arabook.arabook.storage.domain.category.repository.CategoryRepository;
 import com.arabook.arabook.storage.domain.member.entity.Member;
 import com.arabook.arabook.storage.domain.member.entity.MemberCategorySelection;
@@ -30,7 +30,7 @@ public class MemberCategorySelectionServiceImpl implements MemberCategorySelecti
 
     memberCategorySelectionRepository.deleteAllByMember(member);
 
-    List<Category> categories = categoryRepository.findAllById(categoryIds);
+    List<SubCategory> categories = categoryRepository.findAllById(categoryIds);
 
     if (categories.size() != categoryIds.size()) {
       throw new CategoryException(INVALID_CATEGORY_ID);
