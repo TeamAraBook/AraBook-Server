@@ -17,9 +17,9 @@ import com.arabook.arabook.common.exception.book.BookException;
 import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.book.entity.QBestSeller;
 import com.arabook.arabook.storage.domain.book.entity.QBook;
-import com.arabook.arabook.storage.domain.book.entity.QBookCategoryMapping;
 import com.arabook.arabook.storage.domain.book.entity.QBookHashtagMapping;
-import com.arabook.arabook.storage.domain.category.entity.QCategory;
+import com.arabook.arabook.storage.domain.book.entity.QBookSubCategoryMapping;
+import com.arabook.arabook.storage.domain.category.entity.QSubCategory;
 import com.arabook.arabook.storage.domain.hashtag.entity.QHashtag;
 import com.arabook.arabook.storage.domain.member.entity.QAIRecommendation;
 import com.querydsl.core.BooleanBuilder;
@@ -58,9 +58,9 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
   @Override
   public BookDetailResponse findBookDetail(Long bookId) {
     QBook book = QBook.book;
-    QCategory category = QCategory.category;
+    QSubCategory category = QSubCategory.subCategory;
     QHashtag hashtag = QHashtag.hashtag;
-    QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
+    QBookSubCategoryMapping bookCategoryMapping = QBookSubCategoryMapping.bookSubCategoryMapping;
     QBookHashtagMapping bookHashtagMapping = QBookHashtagMapping.bookHashtagMapping;
 
     Book foundBook =
@@ -105,8 +105,8 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
   public AIRecommendBookResponse findAIRecommendBookDefault() {
     QBook book = QBook.book;
     QBestSeller bestSeller = QBestSeller.bestSeller;
-    QCategory category = QCategory.category;
-    QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
+    QSubCategory category = QSubCategory.subCategory;
+    QBookSubCategoryMapping bookCategoryMapping = QBookSubCategoryMapping.bookSubCategoryMapping;
 
     Book foundBook =
         queryFactory
@@ -130,8 +130,8 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
   public AIRecommendBookResponse findAIRecommendBook(final Long memberId) {
     QBook book = QBook.book;
     QAIRecommendation aiRecommendation = QAIRecommendation.aIRecommendation;
-    QCategory category = QCategory.category;
-    QBookCategoryMapping bookCategoryMapping = QBookCategoryMapping.bookCategoryMapping;
+    QSubCategory category = QSubCategory.subCategory;
+    QBookSubCategoryMapping bookCategoryMapping = QBookSubCategoryMapping.bookSubCategoryMapping;
 
     Book foundBook =
         queryFactory
@@ -152,12 +152,14 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
   }
 
   private List<CategoryResponse> getCategories(
-      QCategory category, QBookCategoryMapping bookCategoryMapping, Book foundBook) {
+      QSubCategory category, QBookSubCategoryMapping bookCategoryMapping, Book foundBook) {
     return queryFactory
-        .select(Projections.constructor(CategoryResponse.class, category.categoryId, category.name))
+        .select(
+            Projections.constructor(
+                CategoryResponse.class, category.subCategoryId, category.subCategoryName))
         .from(bookCategoryMapping)
         .leftJoin(category)
-        .on(bookCategoryMapping.category.categoryId.eq(category.categoryId))
+        .on(bookCategoryMapping.subCategory.subCategoryId.eq(category.subCategoryId))
         .where(bookCategoryMapping.book.eq(foundBook))
         .fetch();
   }

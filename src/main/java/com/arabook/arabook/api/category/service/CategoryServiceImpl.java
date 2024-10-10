@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public CategoriesResponse getCategories() {
-    List<CategoryResponse> categories = categoryRepository.findAllOrderByCategoryNameAsc();
+    List<CategoryResponse> categories = categoryRepository.findAllOrderBySubCategoryNameAsc();
     return CategoriesResponse.of(categories.size(), categories);
   }
 }

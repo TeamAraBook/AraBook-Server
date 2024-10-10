@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
-import com.arabook.arabook.storage.domain.category.entity.QCategory;
+import com.arabook.arabook.storage.domain.category.entity.QSubCategory;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -17,13 +17,15 @@ public class CategoryCustomRepositoryImpl implements CategoryCustomRepository {
   private final JPAQueryFactory queryFactory;
 
   @Override
-  public List<CategoryResponse> findAllOrderByCategoryNameAsc() {
-    QCategory category = QCategory.category;
+  public List<CategoryResponse> findAllOrderBySubCategoryNameAsc() {
+    QSubCategory subCategory = QSubCategory.subCategory;
 
     return queryFactory
-        .select(Projections.constructor(CategoryResponse.class, category.categoryId, category.name))
-        .from(category)
-        .orderBy(category.name.asc())
+        .select(
+            Projections.constructor(
+                CategoryResponse.class, subCategory.subCategoryId, subCategory.subCategoryName))
+        .from(subCategory)
+        .orderBy(subCategory.subCategoryName.asc())
         .fetch();
   }
 }
