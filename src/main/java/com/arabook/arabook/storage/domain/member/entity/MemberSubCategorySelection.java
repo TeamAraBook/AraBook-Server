@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "member_category_selections")
-public class MemberCategorySelection {
+@Table(name = "member_sub_category_selections")
+public class MemberSubCategorySelection {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long memberCategorySelectionId;
+  private Long memberSubCategorySelectionId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "member_id")
@@ -34,7 +34,7 @@ public class MemberCategorySelection {
   private SubCategory subCategory;
 
   @Builder
-  private MemberCategorySelection(Member member, SubCategory subCategory) {
+  private MemberSubCategorySelection(Member member, SubCategory subCategory) {
     this.member = member;
     this.subCategory = subCategory;
   }

@@ -12,7 +12,7 @@ import com.arabook.arabook.common.exception.category.CategoryException;
 import com.arabook.arabook.storage.domain.category.entity.SubCategory;
 import com.arabook.arabook.storage.domain.category.repository.CategoryRepository;
 import com.arabook.arabook.storage.domain.member.entity.Member;
-import com.arabook.arabook.storage.domain.member.entity.MemberCategorySelection;
+import com.arabook.arabook.storage.domain.member.entity.MemberSubCategorySelection;
 import com.arabook.arabook.storage.domain.member.repository.MemberCategorySelectionRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -36,17 +36,17 @@ public class MemberCategorySelectionServiceImpl implements MemberCategorySelecti
       throw new CategoryException(INVALID_CATEGORY_ID);
     }
 
-    List<MemberCategorySelection> memberCategorySelections =
+    List<MemberSubCategorySelection> memberSubCategorySelections =
         categories.stream()
             .map(
                 category -> {
-                  return MemberCategorySelection.builder()
+                  return MemberSubCategorySelection.builder()
                       .member(member)
-                      .category(category)
+                      .subCategory(category)
                       .build();
                 })
             .collect(Collectors.toList());
 
-    memberCategorySelectionRepository.saveAll(memberCategorySelections);
+    memberCategorySelectionRepository.saveAll(memberSubCategorySelections);
   }
 }
