@@ -2,7 +2,7 @@ package com.arabook.arabook.api.category.controller;
 
 import org.springframework.http.ResponseEntity;
 
-import com.arabook.arabook.api.category.controller.dto.response.CategoriesResponse;
+import com.arabook.arabook.api.category.controller.dto.response.MainCategoriesResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,8 +25,8 @@ public interface CategoryApi {
                     schema =
                         @Schema(
                             example =
-                                "{\"code\": 200, \"message\": \"카테고리 조회에 성공했습니다\", \"data\": { \"totalCount\": 2, \"categories\": \"[{ \"categoryId\": 1, \"categoryName\": \"로맨스\" }, { \"categoryId\": 2, \"categoryName\": \"판타지\" }]\"}")))
+                                "{\"code\": 200, \"message\": \"대분류 카테고리 조회에 성공했습니다\", \"data\": { \"totalCount\": 2, \"categories\": [ { \"categoryId\": 1, \"categoryName\": \"로맨스\" }, { \"categoryId\": 2, \"categoryName\": \"판타지\" }]}}")))
       })
-  @Operation(summary = "온보딩: 카테고리 리스트 조회", description = "카테고리를 조회합니다.")
-  ResponseEntity<ResponseTemplate<CategoriesResponse>> getCategories();
+  @Operation(summary = "온보딩: 대분류 카테고리 리스트 조회", description = "책 대분류 카테고리를 조회합니다.")
+  ResponseEntity<ResponseTemplate<MainCategoriesResponse>> getMainCategories();
 }
