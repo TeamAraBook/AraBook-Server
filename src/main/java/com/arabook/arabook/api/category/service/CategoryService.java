@@ -1,7 +1,7 @@
 package com.arabook.arabook.api.category.service;
 
-import com.arabook.arabook.api.category.controller.dto.response.CategoriesResponse;
+import com.arabook.arabook.api.category.controller.dto.response.MainCategoriesResponse;
 
 public interface CategoryService {
-  CategoriesResponse getCategories();
+  MainCategoriesResponse getMainCategories();
 }

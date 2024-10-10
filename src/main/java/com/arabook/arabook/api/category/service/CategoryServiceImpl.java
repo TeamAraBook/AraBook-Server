@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arabook.arabook.api.category.controller.dto.response.CategoriesResponse;
-import com.arabook.arabook.api.category.controller.dto.response.CategoryResponse;
-import com.arabook.arabook.storage.domain.category.repository.CategoryRepository;
+import com.arabook.arabook.api.category.controller.dto.response.MainCategoriesResponse;
+import com.arabook.arabook.api.category.controller.dto.response.MainCategoryResponse;
+import com.arabook.arabook.storage.domain.category.repository.MainCategoryRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,11 +15,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CategoryServiceImpl implements CategoryService {
-  private final CategoryRepository categoryRepository;
+  private final MainCategoryRepository mainCategoryRepository;
 
   @Override
-  public CategoriesResponse getCategories() {
-    List<CategoryResponse> categories = categoryRepository.findAllOrderBySubCategoryNameAsc();
-    return CategoriesResponse.of(categories.size(), categories);
+  public MainCategoriesResponse getMainCategories() {
+    List<MainCategoryResponse> mainCategories =
+        mainCategoryRepository.findAllOrderByMainCategoryNameAsc();
+    return MainCategoriesResponse.of(mainCategories.size(), mainCategories);
   }
 }
