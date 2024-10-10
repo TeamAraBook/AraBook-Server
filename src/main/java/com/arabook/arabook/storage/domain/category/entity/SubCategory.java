@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -18,7 +20,11 @@ import lombok.NoArgsConstructor;
 public class SubCategory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long categoryId;
+  private Long subCategoryId;
 
-  @NotNull private String name;
+  @ManyToOne
+  @JoinColumn(name = "main_category_id")
+  private MainCategory mainCategory;
+
+  @NotNull private String subCategoryName;
 }
