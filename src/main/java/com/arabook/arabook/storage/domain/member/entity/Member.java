@@ -1,5 +1,7 @@
 package com.arabook.arabook.storage.domain.member.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -61,8 +63,16 @@ public class Member extends BaseTimeEntity {
     this.role = Role.GUEST;
   }
 
-  public void updateOnboardingInfo(final Gender gender, final int age) {
+  public void updateOnboardingInfo(final String nickname, final Gender gender, final int age) {
+    this.nickname = nickname;
     this.gender = gender;
     this.age = age;
+  }
+
+  public int calculateAge(final String birthYear) {
+    if (birthYear == null) {
+      return 999;
+    }
+    return LocalDateTime.now().getYear() - Integer.parseInt(birthYear);
   }
 }
