@@ -20,7 +20,8 @@ public class MemberServiceImpl implements MemberService {
   @Transactional
   public void onboarding(final MemberOnboardingRequest request, final Long memberId) {
     Member member = memberRepository.findByMemberIdOrThrow(memberId);
-    member.updateOnboardingInfo(request.gender(), request.age());
-    memberCategorySelectionSerivce.selectSubCategories(member, request.interestCategoryIds());
+    int age = member.calculateAge(request.birthYear());
+    member.updateOnboardingInfo(request.nickname(), request.gender(), age);
+    memberCategorySelectionSerivce.selectSubCategories(member, request.interestSubCategoryIds());
   }
 }
