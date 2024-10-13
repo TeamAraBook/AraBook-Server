@@ -33,10 +33,9 @@ public class CategoryController implements CategoryApi {
   @Override
   @GetMapping("/sub")
   public ResponseEntity<ResponseTemplate<List<MainCategoryWithSubCategoriesResponse>>>
-      getSubCategoriesByMainCategories(
-          @RequestParam("mainCategoryIds") List<Long> mainCategoryIds) {
+      getSubCategoriesByMainCategories(@RequestParam("mainIds") List<Long> mainIds) {
     List<MainCategoryWithSubCategoriesResponse> response =
-        categoryService.getSubCategoriesByMainCategories(mainCategoryIds);
+        categoryService.getSubCategoriesByMainCategories(mainIds);
     return ResponseEntity.ok(
         ResponseTemplate.success(GET_SUB_CATEGORIES_BY_MAIN_CATEGORIES, response));
   }
