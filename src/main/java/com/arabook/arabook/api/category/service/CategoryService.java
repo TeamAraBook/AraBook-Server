@@ -1,7 +1,13 @@
 package com.arabook.arabook.api.category.service;
 
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoriesResponse;
+import java.util.List;
+
+import com.arabook.arabook.api.category.controller.dto.response.MainCategoryResponse;
+import com.arabook.arabook.api.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
 
 public interface CategoryService {
-  MainCategoriesResponse getMainCategories();
+  List<MainCategoryResponse> getMainCategories();
+
+  List<MainCategoryWithSubCategoriesResponse> getSubCategoriesByMainCategories(
+      List<Long> mainCategoryIds);
 }

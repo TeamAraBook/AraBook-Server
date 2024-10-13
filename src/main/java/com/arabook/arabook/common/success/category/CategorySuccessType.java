@@ -10,7 +10,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum CategorySuccessType implements SuccessType {
   // 200 OK
-  GET_MAIN_CATEGORIES(HttpStatus.OK, "대분류 카테고리 조회에 성공했습니다");
+  GET_MAIN_CATEGORIES(HttpStatus.OK, "대분류 카테고리 조회에 성공했습니다"),
+  GET_SUB_CATEGORIES_BY_MAIN_CATEGORIES(HttpStatus.OK, "대분류 카테고리별 소분류 카테고리 리스트 조회에 성공했습니다");
 
   private final HttpStatus status;
   private final String message;
