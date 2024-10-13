@@ -17,7 +17,7 @@ public interface MemberApi {
   @ApiResponses(
       value = {
         @ApiResponse(
-            responseCode = "204",
+            responseCode = "200",
             description = "온보딩을 완료했습니다.",
             content =
                 @Content(
@@ -25,7 +25,7 @@ public interface MemberApi {
                     schema =
                         @Schema(
                             example =
-                                "{ \"code\": 204, \"message\": \"온보딩을 완료했습니다.\", \"data\": \"No Data\" }"))),
+                                "{ \"code\": 200, \"message\": \"온보딩을 완료했습니다.\", \"data\": \"No Data\" }"))),
         @ApiResponse(
             responseCode = "400",
             description = "유효한 카테고리를 찾을 수 없습니다",
