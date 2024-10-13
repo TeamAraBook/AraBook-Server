@@ -31,7 +31,7 @@ public class CategoryController implements CategoryApi {
   }
 
   @Override
-  @GetMapping("/subcategories")
+  @GetMapping("/sub")
   public ResponseEntity<ResponseTemplate<List<MainCategoryWithSubCategoriesResponse>>>
       getSubCategoriesByMainCategories(
           @RequestParam("mainCategoryIds") List<Long> mainCategoryIds) {
