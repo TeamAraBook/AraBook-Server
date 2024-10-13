@@ -28,7 +28,7 @@ public interface CategoryApi {
                     schema =
                         @Schema(
                             example =
-                                "{\"code\": 200, \"message\": \"대분류 카테고리 조회에 성공했습니다\", \"data\": { [ { \"mainCategoryId\": 1, \"mainCategoryName\": \"로맨스\" }, { \"mainCategoryId\": 2, \"mainCategoryName\": \"판타지\" } ] }")))
+                                "{\"code\":200,\"message\":\"대분류 카테고리 조회에 성공했습니다\",\"data\":[{\"mainCategoryId\":5,\"mainCategoryName\":\"SF\"},{\"mainCategoryId\":7,\"mainCategoryName\":\"공포소설\"},{\"mainCategoryId\":2,\"mainCategoryName\":\"로맨스\"},{\"mainCategoryId\":3,\"mainCategoryName\":\"시대극\"},{\"mainCategoryId\":6,\"mainCategoryName\":\"역사소설\"},{\"mainCategoryId\":8,\"mainCategoryName\":\"청소년소설\"},{\"mainCategoryId\":4,\"mainCategoryName\":\"추리소설\"},{\"mainCategoryId\":1,\"mainCategoryName\":\"판타지\"},{\"mainCategoryId\":9,\"mainCategoryName\":\"패러디\"},{\"mainCategoryId\":10,\"mainCategoryName\":\"희곡\"}]}")))
       })
   @Operation(summary = "온보딩: 대분류 카테고리 리스트 조회", description = "책 대분류 카테고리를 조회합니다.")
   ResponseEntity<ResponseTemplate<List<MainCategoryResponse>>> getMainCategories();
@@ -44,7 +44,7 @@ public interface CategoryApi {
                     schema =
                         @Schema(
                             example =
-                                "{\"code\": 200, \"message\": \"대분류 카테고리별 소분류 카테고리 리스트 조회에 성공했습니다\", \"data\": { \"totalCount\": 2, \"mainCategories\": [ { \"mainCategoryId\": 1, \"mainCategoryName\": \"로맨스\" }, { \"mainCategoryId\": 2, \"mainCategoryName\": \"판타지\" }]}}")))
+                                "{\"code\":200,\"message\":\"대분류 카테고리별 소분류 카테고리 리스트 조회에 성공했습니다\",\"data\":[{\"mainCategoryId\":2,\"mainCategoryName\":\"로맨스\",\"subCategories\":[{\"subCategoryId\":3,\"subCategoryName\":\"로맨스소설\"},{\"subCategoryId\":4,\"subCategoryName\":\"로맨스판타지\"}]},{\"mainCategoryId\":1,\"mainCategoryName\":\"판타지\",\"subCategories\":[{\"subCategoryId\":2,\"subCategoryName\":\"판타지로맨스\"},{\"subCategoryId\":1,\"subCategoryName\":\"판타지소설\"}]}]}")))
       })
   @Operation(summary = "온보딩: 대분류 카테고리 리스트 조회", description = "책 대분류 카테고리를 조회합니다.")
   ResponseEntity<ResponseTemplate<List<MainCategoryWithSubCategoriesResponse>>>
