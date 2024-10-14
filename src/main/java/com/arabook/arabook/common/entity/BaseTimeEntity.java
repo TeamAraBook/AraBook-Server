@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.common.entity;
+package com.arabook.arabook.common.entity;
 
 import java.time.LocalDateTime;
 
