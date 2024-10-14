@@ -1,22 +1,22 @@
-package com.arabook.arabook.api.review.service;
+package com.arabook.arabook.review.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arabook.arabook.api.review.controller.dto.request.CreateReviewRequest;
-import com.arabook.arabook.api.review.controller.dto.request.UpdateReviewRequest;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewDetailResponse;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewIdResponse;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewResponse;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
 import com.arabook.arabook.book.entity.Book;
 import com.arabook.arabook.book.repository.BookRepository;
 import com.arabook.arabook.member.entity.Member;
 import com.arabook.arabook.member.repository.MemberRepository;
-import com.arabook.arabook.storage.domain.review.entity.Review;
-import com.arabook.arabook.storage.domain.review.repository.ReviewRepository;
+import com.arabook.arabook.review.controller.dto.request.CreateReviewRequest;
+import com.arabook.arabook.review.controller.dto.request.UpdateReviewRequest;
+import com.arabook.arabook.review.controller.dto.response.ReviewDetailResponse;
+import com.arabook.arabook.review.controller.dto.response.ReviewIdResponse;
+import com.arabook.arabook.review.controller.dto.response.ReviewResponse;
+import com.arabook.arabook.review.controller.dto.response.ReviewsResponse;
+import com.arabook.arabook.review.entity.Review;
+import com.arabook.arabook.review.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,9 +1,9 @@
-package com.arabook.arabook.api.review.controller.dto.response;
+package com.arabook.arabook.review.controller.dto.response;
 
 import java.time.LocalDate;
 import java.time.Period;
 
-import com.arabook.arabook.storage.domain.review.entity.enums.ReviewTag;
+import com.arabook.arabook.review.entity.enums.ReviewTag;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
