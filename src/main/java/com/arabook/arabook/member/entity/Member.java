@@ -12,10 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import com.arabook.arabook.common.entity.BaseTimeEntity;
 import com.arabook.arabook.member.entity.enums.Gender;
 import com.arabook.arabook.member.entity.enums.Role;
 import com.arabook.arabook.member.entity.enums.SocialPlatformType;
-import com.arabook.arabook.storage.domain.common.entity.BaseTimeEntity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
