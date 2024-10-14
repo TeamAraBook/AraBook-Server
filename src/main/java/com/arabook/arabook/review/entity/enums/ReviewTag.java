@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.review.entity.enums;
+package com.arabook.arabook.review.entity.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

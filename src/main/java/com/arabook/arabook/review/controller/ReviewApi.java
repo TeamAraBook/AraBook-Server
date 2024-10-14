@@ -1,13 +1,13 @@
-package com.arabook.arabook.api.review.controller;
+package com.arabook.arabook.review.controller;
 
 import org.springframework.http.ResponseEntity;
 
-import com.arabook.arabook.api.review.controller.dto.request.CreateReviewRequest;
-import com.arabook.arabook.api.review.controller.dto.request.UpdateReviewRequest;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewDetailResponse;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewIdResponse;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
+import com.arabook.arabook.review.controller.dto.request.CreateReviewRequest;
+import com.arabook.arabook.review.controller.dto.request.UpdateReviewRequest;
+import com.arabook.arabook.review.controller.dto.response.ReviewDetailResponse;
+import com.arabook.arabook.review.controller.dto.response.ReviewIdResponse;
+import com.arabook.arabook.review.controller.dto.response.ReviewsResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.review.repository;
+package com.arabook.arabook.review.repository;
 
 import static com.arabook.arabook.common.exception.review.ReviewExceptionType.*;
 
@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.arabook.arabook.api.review.controller.dto.response.ReviewDetailResponse;
-import com.arabook.arabook.api.review.controller.dto.response.ReviewResponse;
 import com.arabook.arabook.common.exception.review.ReviewException;
+import com.arabook.arabook.review.controller.dto.response.ReviewDetailResponse;
+import com.arabook.arabook.review.controller.dto.response.ReviewResponse;
+import com.arabook.arabook.review.entity.Review;
 import com.arabook.arabook.storage.domain.review.entity.QReview;
-import com.arabook.arabook.storage.domain.review.entity.Review;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;

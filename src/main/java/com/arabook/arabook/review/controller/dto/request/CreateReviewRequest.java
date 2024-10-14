@@ -1,16 +1,16 @@
-package com.arabook.arabook.api.review.controller.dto.request;
+package com.arabook.arabook.review.controller.dto.request;
 
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotNull;
 
-import com.arabook.arabook.storage.domain.review.entity.enums.ReviewTag;
+import com.arabook.arabook.review.entity.enums.ReviewTag;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(name = "UpdateReviewRequest", description = "책에 대한 기록 수정 요청 DTO")
-public record UpdateReviewRequest(
-    @NotNull @Schema(description = "기록 id", example = "1") Long reviewId,
+@Schema(name = "CreateReviewRequest", description = "책에 대한 기록 생성 요청 DTO")
+public record CreateReviewRequest(
+    @NotNull @Schema(description = "책 id", example = "1") Long bookId,
     @NotNull
         @Schema(
             description =

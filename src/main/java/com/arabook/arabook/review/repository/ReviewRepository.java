@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.review.repository;
+package com.arabook.arabook.review.repository;
 
 import static com.arabook.arabook.common.exception.review.ReviewExceptionType.*;
 
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.arabook.arabook.common.exception.review.ReviewException;
-import com.arabook.arabook.storage.domain.review.entity.Review;
+import com.arabook.arabook.review.entity.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewCustomRepository {
   @Query(
