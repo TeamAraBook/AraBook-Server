@@ -1,9 +1,9 @@
-package com.arabook.arabook.api.member.controller;
+package com.arabook.arabook.member.controller;
 
 import org.springframework.http.ResponseEntity;
 
-import com.arabook.arabook.api.member.controller.dto.request.MemberOnboardingRequest;
 import com.arabook.arabook.common.response.ResponseTemplate;
+import com.arabook.arabook.member.controller.dto.request.MemberOnboardingRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

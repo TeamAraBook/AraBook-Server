@@ -1,6 +1,4 @@
-package com.arabook.arabook.storage.domain.member.entity;
-
-import java.time.LocalDate;
+package com.arabook.arabook.member.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,30 +8,34 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
-import com.arabook.arabook.book.entity.Book;
+import com.arabook.arabook.category.entity.SubCategory;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "daily_book_id_recommendations")
-public class AIRecommendation {
+@Table(name = "member_sub_category_selections")
+public class MemberSubCategorySelection {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long dailyBookIdRecommendationId;
+  private Long memberSubCategorySelectionId;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "member_id")
   private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "book_id")
-  private Book book;
+  @JoinColumn(name = "category_id")
+  private SubCategory subCategory;
 
-  @NotNull LocalDate recommendationDate;
+  @Builder
+  private MemberSubCategorySelection(Member member, SubCategory subCategory) {
+    this.member = member;
+    this.subCategory = subCategory;
+  }
 }

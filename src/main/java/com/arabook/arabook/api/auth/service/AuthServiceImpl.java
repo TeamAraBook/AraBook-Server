@@ -10,8 +10,8 @@ import com.arabook.arabook.api.auth.controller.dto.response.AuthResponse;
 import com.arabook.arabook.api.auth.controller.dto.response.IssueTokenResponse;
 import com.arabook.arabook.api.auth.service.vo.AuthMemberVO;
 import com.arabook.arabook.external.jwt.service.JwtService;
-import com.arabook.arabook.storage.domain.member.entity.Member;
-import com.arabook.arabook.storage.domain.member.repository.MemberRepository;
+import com.arabook.arabook.member.entity.Member;
+import com.arabook.arabook.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 

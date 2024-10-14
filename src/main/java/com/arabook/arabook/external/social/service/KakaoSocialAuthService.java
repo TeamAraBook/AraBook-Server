@@ -11,7 +11,7 @@ import com.arabook.arabook.api.auth.service.SocialAuthService;
 import com.arabook.arabook.api.auth.service.vo.AuthMemberVO;
 import com.arabook.arabook.common.exception.auth.AuthException;
 import com.arabook.arabook.external.social.service.dto.KakaoUserInfoResponse;
-import com.arabook.arabook.storage.domain.member.entity.enums.SocialPlatformType;
+import com.arabook.arabook.member.entity.enums.SocialPlatformType;
 
 import reactor.core.publisher.Mono;
 

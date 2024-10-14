@@ -13,8 +13,8 @@ import com.arabook.arabook.api.review.controller.dto.response.ReviewResponse;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
 import com.arabook.arabook.book.entity.Book;
 import com.arabook.arabook.book.repository.BookRepository;
-import com.arabook.arabook.storage.domain.member.entity.Member;
-import com.arabook.arabook.storage.domain.member.repository.MemberRepository;
+import com.arabook.arabook.member.entity.Member;
+import com.arabook.arabook.member.repository.MemberRepository;
 import com.arabook.arabook.storage.domain.review.entity.Review;
 import com.arabook.arabook.storage.domain.review.repository.ReviewRepository;
 

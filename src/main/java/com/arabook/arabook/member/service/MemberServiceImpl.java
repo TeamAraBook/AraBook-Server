@@ -1,11 +1,11 @@
-package com.arabook.arabook.api.member.service;
+package com.arabook.arabook.member.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arabook.arabook.api.member.controller.dto.request.MemberOnboardingRequest;
-import com.arabook.arabook.storage.domain.member.entity.Member;
-import com.arabook.arabook.storage.domain.member.repository.MemberRepository;
+import com.arabook.arabook.member.controller.dto.request.MemberOnboardingRequest;
+import com.arabook.arabook.member.entity.Member;
+import com.arabook.arabook.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
 

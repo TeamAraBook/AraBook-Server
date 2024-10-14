@@ -2,8 +2,8 @@ package com.arabook.arabook.api.auth.service.vo;
 
 import jakarta.validation.constraints.NotNull;
 
-import com.arabook.arabook.storage.domain.member.entity.Member;
-import com.arabook.arabook.storage.domain.member.entity.enums.SocialPlatformType;
+import com.arabook.arabook.member.entity.Member;
+import com.arabook.arabook.member.entity.enums.SocialPlatformType;
 
 public record AuthMemberVO(
     @NotNull String platformId, @NotNull SocialPlatformType platformType, String email) {

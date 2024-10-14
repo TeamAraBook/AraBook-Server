@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.member.entity.enums;
+package com.arabook.arabook.member.entity.enums;
 
 public enum Role {
   /**
