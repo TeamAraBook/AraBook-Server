@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import com.arabook.arabook.storage.domain.category.entity.SubCategory;
+import com.arabook.arabook.category.entity.SubCategory;
 
 import lombok.AccessLevel;
 import lombok.Getter;

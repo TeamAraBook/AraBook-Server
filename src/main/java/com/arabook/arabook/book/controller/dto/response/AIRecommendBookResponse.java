@@ -2,7 +2,7 @@ package com.arabook.arabook.book.controller.dto.response;
 
 import java.util.List;
 
-import com.arabook.arabook.api.category.controller.dto.response.SubCategoryResponse;
+import com.arabook.arabook.category.controller.dto.response.SubCategoryResponse;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

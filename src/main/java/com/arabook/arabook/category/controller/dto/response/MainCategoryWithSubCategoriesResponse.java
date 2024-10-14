@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.category.controller.dto.response;
+package com.arabook.arabook.category.controller.dto.response;
 
 import java.util.List;
 

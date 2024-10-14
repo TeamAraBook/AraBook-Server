@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.arabook.arabook.category.entity.SubCategory;
+import com.arabook.arabook.category.repository.SubCategoryRepository;
 import com.arabook.arabook.common.exception.category.CategoryException;
-import com.arabook.arabook.storage.domain.category.entity.SubCategory;
-import com.arabook.arabook.storage.domain.category.repository.SubCategoryRepository;
 import com.arabook.arabook.storage.domain.member.entity.Member;
 import com.arabook.arabook.storage.domain.member.entity.MemberSubCategorySelection;
 import com.arabook.arabook.storage.domain.member.repository.MemberSubCategorySelectionRepository;

@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.category.controller;
+package com.arabook.arabook.category.controller;
 
 import static com.arabook.arabook.common.success.category.CategorySuccessType.*;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryResponse;
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
-import com.arabook.arabook.api.category.service.CategoryService;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryResponse;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
+import com.arabook.arabook.category.service.CategoryService;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import lombok.RequiredArgsConstructor;

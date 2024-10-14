@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.category.service;
+package com.arabook.arabook.category.service;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -8,11 +8,11 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryResponse;
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
-import com.arabook.arabook.api.category.controller.dto.response.SubCategoryResponse;
-import com.arabook.arabook.storage.domain.category.repository.MainCategoryRepository;
-import com.arabook.arabook.storage.domain.category.repository.SubCategoryRepository;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryResponse;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
+import com.arabook.arabook.category.controller.dto.response.SubCategoryResponse;
+import com.arabook.arabook.category.repository.MainCategoryRepository;
+import com.arabook.arabook.category.repository.SubCategoryRepository;
 import com.querydsl.core.Tuple;
 
 import lombok.RequiredArgsConstructor;

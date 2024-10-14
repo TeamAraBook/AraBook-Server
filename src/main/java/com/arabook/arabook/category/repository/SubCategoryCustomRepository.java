@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.category.repository;
+package com.arabook.arabook.category.repository;
 
 import java.util.List;
 
