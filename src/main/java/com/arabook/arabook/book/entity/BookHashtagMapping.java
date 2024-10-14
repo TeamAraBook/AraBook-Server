@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import com.arabook.arabook.storage.domain.hashtag.entity.Hashtag;
+import com.arabook.arabook.hashtag.entity.Hashtag;
 
 import lombok.AccessLevel;
 import lombok.Getter;
