@@ -1,11 +1,11 @@
-package com.arabook.arabook.api.category.controller;
+package com.arabook.arabook.category.controller;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryResponse;
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryResponse;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryWithSubCategoriesResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import io.swagger.v3.oas.annotations.Operation;

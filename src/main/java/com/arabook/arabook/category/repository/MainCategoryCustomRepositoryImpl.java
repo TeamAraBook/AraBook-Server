@@ -1,10 +1,10 @@
-package com.arabook.arabook.storage.domain.category.repository;
+package com.arabook.arabook.category.repository;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.arabook.arabook.api.category.controller.dto.response.MainCategoryResponse;
+import com.arabook.arabook.category.controller.dto.response.MainCategoryResponse;
 import com.arabook.arabook.storage.domain.category.entity.QMainCategory;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;

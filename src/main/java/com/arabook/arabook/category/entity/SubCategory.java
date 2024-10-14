@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.category.entity;
+package com.arabook.arabook.category.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
