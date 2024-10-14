@@ -1,10 +1,10 @@
-package com.arabook.arabook.storage.domain.book.repository;
+package com.arabook.arabook.book.repository;
 
 import java.util.List;
 
-import com.arabook.arabook.api.book.controller.dto.response.AIRecommendBookResponse;
-import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
-import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
+import com.arabook.arabook.book.controller.dto.response.AIRecommendBookResponse;
+import com.arabook.arabook.book.controller.dto.response.BookDetailResponse;
+import com.arabook.arabook.book.controller.dto.response.BookResponse;
 
 public interface BookCustomRepository {
   List<BookResponse> findBooksBySearch(String keyword);

@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.book.entity;
+package com.arabook.arabook.book.entity;
 
 import static com.arabook.arabook.common.exception.book.BookExceptionType.*;
 

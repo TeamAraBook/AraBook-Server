@@ -1,7 +1,5 @@
 package com.arabook.arabook.api.review.service;
 
-import static com.arabook.arabook.storage.domain.member.entity.QMember.*;
-
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -13,8 +11,8 @@ import com.arabook.arabook.api.review.controller.dto.response.ReviewDetailRespon
 import com.arabook.arabook.api.review.controller.dto.response.ReviewIdResponse;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewResponse;
 import com.arabook.arabook.api.review.controller.dto.response.ReviewsResponse;
-import com.arabook.arabook.storage.domain.book.entity.Book;
-import com.arabook.arabook.storage.domain.book.repository.BookRepository;
+import com.arabook.arabook.book.entity.Book;
+import com.arabook.arabook.book.repository.BookRepository;
 import com.arabook.arabook.storage.domain.member.entity.Member;
 import com.arabook.arabook.storage.domain.member.repository.MemberRepository;
 import com.arabook.arabook.storage.domain.review.entity.Review;
