@@ -2,6 +2,7 @@ package com.arabook.arabook.storage.domain.book.repository;
 
 import static com.arabook.arabook.common.exception.book.BookExceptionType.*;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -138,8 +139,19 @@ public class BookCustomRepositoryImpl implements BookCustomRepository {
             .selectFrom(book)
             .join(aiRecommendation)
             .on(book.bookId.eq(aiRecommendation.book.bookId))
-            .where(aiRecommendation.member.memberId.eq(memberId))
+            .where(
+                aiRecommendation
+                    .member
+                    .memberId
+                    .eq(memberId)
+                    .and(aiRecommendation.recommendationDate.eq(LocalDate.now())))
             .fetchFirst();
+
+    boolean hasNotRecommendBook = foundBook == null;
+
+    if (hasNotRecommendBook) {
+      return findAIRecommendBookDefault();
+    }
 
     List<SubCategoryResponse> categories = getCategories(category, bookCategoryMapping, foundBook);
 
