@@ -3,9 +3,9 @@ package com.arabook.arabook.book.controller.dto.response;
 import java.time.Year;
 import java.util.List;
 
-import com.arabook.arabook.api.hashtag.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.book.entity.Book;
 import com.arabook.arabook.category.controller.dto.response.SubCategoryResponse;
+import com.arabook.arabook.hashtag.controller.dto.response.HashTagResponse;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

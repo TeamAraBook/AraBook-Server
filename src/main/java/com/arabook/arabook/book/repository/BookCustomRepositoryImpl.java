@@ -9,13 +9,13 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.arabook.arabook.api.hashtag.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.book.controller.dto.response.AIRecommendBookResponse;
 import com.arabook.arabook.book.controller.dto.response.BookDetailResponse;
 import com.arabook.arabook.book.controller.dto.response.BookResponse;
 import com.arabook.arabook.book.entity.Book;
 import com.arabook.arabook.category.controller.dto.response.SubCategoryResponse;
 import com.arabook.arabook.common.exception.book.BookException;
+import com.arabook.arabook.hashtag.controller.dto.response.HashTagResponse;
 import com.arabook.arabook.storage.domain.book.entity.QBestSeller;
 import com.arabook.arabook.storage.domain.book.entity.QBook;
 import com.arabook.arabook.storage.domain.book.entity.QBookHashtagMapping;

@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.domain.hashtag.entity;
+package com.arabook.arabook.hashtag.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
