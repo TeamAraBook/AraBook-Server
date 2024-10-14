@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.book.controller;
+package com.arabook.arabook.book.controller;
 
 import static com.arabook.arabook.common.success.book.BookSuccessType.*;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
-import com.arabook.arabook.api.book.controller.dto.response.BooksResponse;
-import com.arabook.arabook.api.book.service.BookService;
+import com.arabook.arabook.book.controller.dto.response.BookDetailResponse;
+import com.arabook.arabook.book.controller.dto.response.BooksResponse;
+import com.arabook.arabook.book.service.BookService;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import lombok.RequiredArgsConstructor;

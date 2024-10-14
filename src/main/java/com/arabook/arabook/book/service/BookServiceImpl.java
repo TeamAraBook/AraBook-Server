@@ -1,14 +1,14 @@
-package com.arabook.arabook.api.book.service;
+package com.arabook.arabook.book.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arabook.arabook.api.book.controller.dto.response.BookDetailResponse;
-import com.arabook.arabook.api.book.controller.dto.response.BookResponse;
-import com.arabook.arabook.api.book.controller.dto.response.BooksResponse;
-import com.arabook.arabook.storage.domain.book.repository.BookRepository;
+import com.arabook.arabook.book.controller.dto.response.BookDetailResponse;
+import com.arabook.arabook.book.controller.dto.response.BookResponse;
+import com.arabook.arabook.book.controller.dto.response.BooksResponse;
+import com.arabook.arabook.book.repository.BookRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.book.controller.dto.response;
+package com.arabook.arabook.book.controller.dto.response;
 
 import java.util.List;
 

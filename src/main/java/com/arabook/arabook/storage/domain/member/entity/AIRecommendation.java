@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
-import com.arabook.arabook.storage.domain.book.entity.Book;
+import com.arabook.arabook.book.entity.Book;
 
 import lombok.AccessLevel;
 import lombok.Getter;

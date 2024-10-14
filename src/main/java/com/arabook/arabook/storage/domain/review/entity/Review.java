@@ -16,8 +16,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import com.arabook.arabook.book.entity.Book;
 import com.arabook.arabook.common.exception.review.ReviewException;
-import com.arabook.arabook.storage.domain.book.entity.Book;
 import com.arabook.arabook.storage.domain.common.entity.BaseTimeEntity;
 import com.arabook.arabook.storage.domain.member.entity.Member;
 import com.arabook.arabook.storage.domain.review.entity.enums.ReviewTag;
