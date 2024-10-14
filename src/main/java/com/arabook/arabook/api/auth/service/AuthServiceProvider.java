@@ -7,7 +7,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import com.arabook.arabook.external.social.service.KakaoSocialAuthService;
-import com.arabook.arabook.storage.domain.member.entity.enums.SocialPlatformType;
+import com.arabook.arabook.member.entity.enums.SocialPlatformType;
 
 import lombok.RequiredArgsConstructor;
 

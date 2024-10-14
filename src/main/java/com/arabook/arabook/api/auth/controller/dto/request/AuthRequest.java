@@ -2,7 +2,7 @@ package com.arabook.arabook.api.auth.controller.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 
-import com.arabook.arabook.storage.domain.member.entity.enums.SocialPlatformType;
+import com.arabook.arabook.member.entity.enums.SocialPlatformType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.member.controller;
+package com.arabook.arabook.member.controller;
 
 import static com.arabook.arabook.common.success.member.MemberSuccessType.*;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.arabook.arabook.api.global.security.AuthMember;
-import com.arabook.arabook.api.member.controller.dto.request.MemberOnboardingRequest;
-import com.arabook.arabook.api.member.service.MemberServiceImpl;
 import com.arabook.arabook.common.response.ResponseTemplate;
+import com.arabook.arabook.member.controller.dto.request.MemberOnboardingRequest;
+import com.arabook.arabook.member.service.MemberServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 

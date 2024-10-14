@@ -1,6 +1,6 @@
 package com.arabook.arabook.api.auth.controller.dto.response;
 
-import com.arabook.arabook.storage.domain.member.entity.enums.Role;
+import com.arabook.arabook.member.entity.enums.Role;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

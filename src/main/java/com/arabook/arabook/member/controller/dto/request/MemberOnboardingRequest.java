@@ -1,10 +1,10 @@
-package com.arabook.arabook.api.member.controller.dto.request;
+package com.arabook.arabook.member.controller.dto.request;
 
 import java.util.List;
 
 import jakarta.validation.constraints.NotNull;
 
-import com.arabook.arabook.storage.domain.member.entity.enums.Gender;
+import com.arabook.arabook.member.entity.enums.Gender;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

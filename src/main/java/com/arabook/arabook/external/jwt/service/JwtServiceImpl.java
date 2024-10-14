@@ -15,7 +15,7 @@ import com.arabook.arabook.api.auth.controller.dto.response.IssueTokenResponse;
 import com.arabook.arabook.common.exception.auth.AuthException;
 import com.arabook.arabook.external.jwt.provider.JwtTokenProvider;
 import com.arabook.arabook.external.jwt.validator.JwtTokenValidator;
-import com.arabook.arabook.storage.domain.member.entity.enums.Role;
+import com.arabook.arabook.member.entity.enums.Role;
 import com.arabook.arabook.storage.redis.repository.RedisTokenRepository;
 import com.arabook.arabook.storage.redis.repository.dto.RefreshTokenDTO;
 
