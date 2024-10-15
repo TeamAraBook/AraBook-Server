@@ -40,6 +40,6 @@ public interface AuthApi {
                             example =
                                 "{\"code\": 400, \"message\": \"올바르지 않은 소셜 로그인 요청입니다.\", \"data\": \"No Data\"}")))
       })
-  @Operation(summary = "온보딩: 카테고리 리스트 조회", description = "카테고리를 조회합니다.")
+  @Operation(summary = "소셜로그인: 회원가입 또는 로그인 요청", description = "소셜 로그인")
   ResponseEntity<ResponseTemplate<AuthResponse>> signUpOrLogin(@Valid AuthRequest request);
 }
