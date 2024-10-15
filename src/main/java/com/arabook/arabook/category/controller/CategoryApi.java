@@ -49,6 +49,6 @@ public interface CategoryApi {
   @Operation(summary = "온보딩: 대분류 카테고리 리스트 조회", description = "책 대분류 카테고리를 조회합니다.")
   ResponseEntity<ResponseTemplate<List<MainCategoryWithSubCategoriesResponse>>>
       getSubCategoriesByMainCategories(
-          @Schema(description = "mainIds: 메인 카테고리 id 리스트", example = "mainIds=1,2,3")
+          @Schema(description = "mainIds: 메인 카테고리 id 리스트", example = "1,2,3")
               List<Long> mainCategoryIds);
 }
