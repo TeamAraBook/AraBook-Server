@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arabook.arabook.api.global.security.AuthMember;
 import com.arabook.arabook.common.response.ResponseTemplate;
+import com.arabook.arabook.common.security.AuthMember;
 import com.arabook.arabook.member.controller.dto.request.MemberOnboardingRequest;
 import com.arabook.arabook.member.service.MemberServiceImpl;
 

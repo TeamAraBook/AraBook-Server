@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.filter;
+package com.arabook.arabook.common.security.filter;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,8 +17,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.arabook.arabook.api.global.security.MemberAuthentication;
 import com.arabook.arabook.common.exception.auth.AuthException;
+import com.arabook.arabook.common.security.MemberAuthentication;
 import com.arabook.arabook.external.jwt.service.JwtService;
 import com.arabook.arabook.external.jwt.validator.JwtTokenValidator;
 

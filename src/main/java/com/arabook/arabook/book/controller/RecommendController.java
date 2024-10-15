@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arabook.arabook.api.global.security.AuthMember;
 import com.arabook.arabook.book.controller.dto.response.AIRecommendBookResponse;
 import com.arabook.arabook.book.controller.dto.response.BooksResponse;
 import com.arabook.arabook.book.service.BestSellerService;
 import com.arabook.arabook.common.response.ResponseTemplate;
+import com.arabook.arabook.common.security.AuthMember;
 
 import lombok.RequiredArgsConstructor;
 

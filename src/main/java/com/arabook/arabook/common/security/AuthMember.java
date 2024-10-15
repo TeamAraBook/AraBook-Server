@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.security;
+package com.arabook.arabook.common.security;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
