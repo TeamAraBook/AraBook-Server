@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.redis.repository;
+package com.arabook.arabook.common.redis.repository;
 
 import static com.arabook.arabook.common.exception.auth.AuthExceptionType.*;
 
@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.arabook.arabook.common.exception.auth.AuthException;
-import com.arabook.arabook.storage.redis.repository.dto.RefreshTokenDTO;
+import com.arabook.arabook.common.redis.repository.dto.RefreshTokenDTO;
 
 @Repository
 public interface RedisTokenRepository extends CrudRepository<RefreshTokenDTO, String> {
