@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.auth.controller;
+package com.arabook.arabook.auth.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arabook.arabook.api.auth.controller.dto.response.IssueTokenResponse;
+import com.arabook.arabook.auth.controller.dto.response.IssueTokenResponse;
 import com.arabook.arabook.external.jwt.service.JwtService;
 
 import lombok.RequiredArgsConstructor;

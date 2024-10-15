@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.auth.service;
+package com.arabook.arabook.auth.service;
 
 import java.util.concurrent.ConcurrentHashMap;
 

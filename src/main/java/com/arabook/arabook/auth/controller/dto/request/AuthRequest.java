@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.auth.controller.dto.request;
+package com.arabook.arabook.auth.controller.dto.request;
 
 import jakarta.validation.constraints.NotNull;
 

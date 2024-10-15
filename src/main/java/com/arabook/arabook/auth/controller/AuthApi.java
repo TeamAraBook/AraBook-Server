@@ -1,11 +1,11 @@
-package com.arabook.arabook.api.auth.controller;
+package com.arabook.arabook.auth.controller;
 
 import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 
-import com.arabook.arabook.api.auth.controller.dto.request.AuthRequest;
-import com.arabook.arabook.api.auth.controller.dto.response.AuthResponse;
+import com.arabook.arabook.auth.controller.dto.request.AuthRequest;
+import com.arabook.arabook.auth.controller.dto.response.AuthResponse;
 import com.arabook.arabook.common.response.ResponseTemplate;
 
 import io.swagger.v3.oas.annotations.Operation;

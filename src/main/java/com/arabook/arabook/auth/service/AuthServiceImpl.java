@@ -1,14 +1,14 @@
-package com.arabook.arabook.api.auth.service;
+package com.arabook.arabook.auth.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.arabook.arabook.api.auth.controller.dto.request.AuthRequest;
-import com.arabook.arabook.api.auth.controller.dto.response.AuthResponse;
-import com.arabook.arabook.api.auth.controller.dto.response.IssueTokenResponse;
-import com.arabook.arabook.api.auth.service.vo.AuthMemberVO;
+import com.arabook.arabook.auth.controller.dto.request.AuthRequest;
+import com.arabook.arabook.auth.controller.dto.response.AuthResponse;
+import com.arabook.arabook.auth.controller.dto.response.IssueTokenResponse;
+import com.arabook.arabook.auth.service.vo.AuthMemberVO;
 import com.arabook.arabook.external.jwt.service.JwtService;
 import com.arabook.arabook.member.entity.Member;
 import com.arabook.arabook.member.repository.MemberRepository;
