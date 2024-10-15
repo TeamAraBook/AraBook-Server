@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.arabook.arabook.storage.domain.category.entity.QMainCategory;
-import com.arabook.arabook.storage.domain.category.entity.QSubCategory;
+import com.arabook.arabook.category.entity.QMainCategory;
+import com.arabook.arabook.category.entity.QSubCategory;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
