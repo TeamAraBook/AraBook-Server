@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.config;
+package com.arabook.arabook.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

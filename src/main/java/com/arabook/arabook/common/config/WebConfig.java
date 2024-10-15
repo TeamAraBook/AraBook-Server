@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.config;
+package com.arabook.arabook.common.config;
 
 import java.util.List;
 
