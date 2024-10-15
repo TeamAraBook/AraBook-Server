@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.auth.controller.dto.response;
+package com.arabook.arabook.auth.controller.dto.response;
 
 import com.arabook.arabook.member.entity.enums.Role;
 

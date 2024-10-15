@@ -4,8 +4,8 @@ import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import com.arabook.arabook.api.auth.controller.dto.request.IssueTokenRequest;
-import com.arabook.arabook.api.auth.controller.dto.response.IssueTokenResponse;
+import com.arabook.arabook.auth.controller.dto.request.IssueTokenRequest;
+import com.arabook.arabook.auth.controller.dto.response.IssueTokenResponse;
 
 public interface JwtService {
   IssueTokenResponse issueToken(String memberId, List<String> roles);

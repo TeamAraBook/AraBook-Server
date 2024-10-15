@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.auth.service.vo;
+package com.arabook.arabook.auth.service.vo;
 
 import jakarta.validation.constraints.NotNull;
 

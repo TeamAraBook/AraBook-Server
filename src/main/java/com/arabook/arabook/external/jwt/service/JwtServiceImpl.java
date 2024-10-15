@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.arabook.arabook.api.auth.controller.dto.request.IssueTokenRequest;
-import com.arabook.arabook.api.auth.controller.dto.response.IssueTokenResponse;
+import com.arabook.arabook.auth.controller.dto.request.IssueTokenRequest;
+import com.arabook.arabook.auth.controller.dto.response.IssueTokenResponse;
 import com.arabook.arabook.common.exception.auth.AuthException;
 import com.arabook.arabook.external.jwt.provider.JwtTokenProvider;
 import com.arabook.arabook.external.jwt.validator.JwtTokenValidator;
