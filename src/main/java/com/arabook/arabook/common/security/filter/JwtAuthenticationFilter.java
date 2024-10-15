@@ -1,5 +1,7 @@
 package com.arabook.arabook.common.security.filter;
 
+import static com.arabook.arabook.common.config.SecurityConfig.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.arabook.arabook.category.controller.dto.response.MainCategoryResponse;
-import com.arabook.arabook.storage.domain.category.entity.QMainCategory;
+import com.arabook.arabook.category.entity.QMainCategory;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
