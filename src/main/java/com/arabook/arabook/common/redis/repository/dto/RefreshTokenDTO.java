@@ -1,4 +1,4 @@
-package com.arabook.arabook.storage.redis.repository.dto;
+package com.arabook.arabook.common.redis.repository.dto;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
