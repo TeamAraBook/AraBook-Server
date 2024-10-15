@@ -19,11 +19,11 @@ public enum ReviewTag {
       "평범했어.",
       "#7187FF"),
   ENJOYABLE(
-      "https://github.com/TeamAraBook/AraBook-Server/blob/dev/src/main/resources/card/ENJOYABLE.png?raw=true",
+      "https://github.com/TeamAraBook/AraBook-Server/blob/dev/src/main/resources/images/card/ENJOYABLE.png?raw=true",
       "재밌었어!",
       "#1FD068"),
   LIFE_CHANGING(
-      "https://github.com/TeamAraBook/AraBook-Server/blob/dev/src/main/resources/card/LIFE_CHANGING.png?raw=true",
+      "https://github.com/TeamAraBook/AraBook-Server/blob/dev/src/main/resources/images/card/LIFE_CHANGING.png?raw=true",
       "내 인생책이야 !!",
       "#FE5D5C");
 
