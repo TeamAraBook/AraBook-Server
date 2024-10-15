@@ -15,8 +15,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.arabook.arabook.api.global.filter.JwtAuthenticationFilter;
-import com.arabook.arabook.api.global.filter.JwtExceptionFilter;
+import com.arabook.arabook.common.security.filter.JwtAuthenticationFilter;
+import com.arabook.arabook.common.security.filter.JwtExceptionFilter;
 
 import io.swagger.v3.oas.models.PathItem;
 import lombok.RequiredArgsConstructor;

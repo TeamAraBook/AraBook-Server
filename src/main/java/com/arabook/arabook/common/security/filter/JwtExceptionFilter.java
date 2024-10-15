@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.filter;
+package com.arabook.arabook.common.security.filter;
 
 import java.io.IOException;
 

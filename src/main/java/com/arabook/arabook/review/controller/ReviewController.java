@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arabook.arabook.api.global.security.AuthMember;
 import com.arabook.arabook.common.response.ResponseTemplate;
+import com.arabook.arabook.common.security.AuthMember;
 import com.arabook.arabook.review.controller.dto.request.CreateReviewRequest;
 import com.arabook.arabook.review.controller.dto.request.UpdateReviewRequest;
 import com.arabook.arabook.review.controller.dto.response.ReviewDetailResponse;

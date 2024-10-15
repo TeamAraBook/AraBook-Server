@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.security;
+package com.arabook.arabook.common.security;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.Authentication;
