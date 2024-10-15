@@ -1,7 +1,5 @@
 package com.arabook.arabook.api.global.filter;
 
-import static com.arabook.arabook.api.global.config.SecurityConfig.*;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;

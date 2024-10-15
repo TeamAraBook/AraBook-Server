@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.config;
+package com.arabook.arabook.common.config;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
