@@ -1,4 +1,4 @@
-package com.arabook.arabook.api.global.handler;
+package com.arabook.arabook.common.handler;
 
 import static com.arabook.arabook.common.exception.common.CommonExceptionType.*;
 
