@@ -1,7 +1,7 @@
 package com.arabook.arabook.review.controller.dto.response;
 
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 import com.arabook.arabook.review.entity.enums.ReviewTag;
 
@@ -41,6 +41,6 @@ public record ReviewResponse(
   }
 
   private static int getDayDiff(LocalDate start, LocalDate end) {
-    return Period.between(start, end).getDays();
+    return (int) ChronoUnit.DAYS.between(start, end);
   }
 }
