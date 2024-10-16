@@ -30,7 +30,7 @@ public class MemberSubCategorySelectionServiceImpl implements MemberSubCategoryS
 
     memberSubCategorySelectionRepository.deleteAllByMember(member);
 
-    List<SubCategory> categories = subCategoryRepository.findAllById(categoryIds);
+    List<SubCategory> categories = subCategoryRepository.findAllInIds(categoryIds);
 
     if (categories.size() != categoryIds.size()) {
       throw new CategoryException(INVALID_CATEGORY_ID);
