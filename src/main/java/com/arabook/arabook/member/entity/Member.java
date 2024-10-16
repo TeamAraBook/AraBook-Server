@@ -67,6 +67,7 @@ public class Member extends BaseTimeEntity {
     this.nickname = nickname;
     this.gender = gender;
     this.age = age;
+    this.role = Role.USER;
   }
 
   public int calculateAge(final String birthYear) {
