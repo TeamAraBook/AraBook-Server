@@ -30,7 +30,7 @@ public class MemberSubCategorySelection {
   private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "category_id")
+  @JoinColumn(name = "sub_category_id")
   private SubCategory subCategory;
 
   @Builder
