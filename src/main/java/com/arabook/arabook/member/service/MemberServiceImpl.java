@@ -1,11 +1,14 @@
 package com.arabook.arabook.member.service;
 
+import java.util.*;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.arabook.arabook.member.controller.dto.request.MemberOnboardingRequest;
-import com.arabook.arabook.member.entity.Member;
-import com.arabook.arabook.member.repository.MemberRepository;
+import com.arabook.arabook.member.entity.*;
+import com.arabook.arabook.member.repository.*;
+import com.arabook.arabook.review.repository.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +17,9 @@ import lombok.RequiredArgsConstructor;
 @Transactional(readOnly = true)
 public class MemberServiceImpl implements MemberService {
   private final MemberRepository memberRepository;
-  private final MemberSubCategorySelectionService memberCategorySelectionSerivce;
+  private final ReviewRepository reviewRepository;
+  private final MemberSubCategorySelectionRepository memberSubCategorySelectionRepository;
+  private final MemberSubCategorySelectionService memberCategorySelectionService;
 
   @Override
   @Transactional
@@ -22,6 +27,15 @@ public class MemberServiceImpl implements MemberService {
     Member member = memberRepository.findByMemberIdOrThrow(memberId);
     int age = member.calculateAge(request.birthYear());
     member.updateOnboardingInfo(request.nickname(), request.gender(), age);
-    memberCategorySelectionSerivce.selectSubCategories(member, request.interestSubCategoryIds());
+    memberCategorySelectionService.selectSubCategories(member, request.interestSubCategoryIds());
+  }
+
+  @Override
+  @Transactional
+  public void withdraw(final Long memberId) {
+    Member member = memberRepository.findByMemberIdOrThrow(memberId);
+    memberSubCategorySelectionRepository.deleteByMember(member);
+    reviewRepository.deleteByReviewer(member);
+    memberRepository.delete(member);
   }
 }

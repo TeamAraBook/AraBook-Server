@@ -4,4 +4,6 @@ import com.arabook.arabook.member.controller.dto.request.MemberOnboardingRequest
 
 public interface MemberService {
   void onboarding(MemberOnboardingRequest request, Long memberId);
+
+  void withdraw(Long memberId);
 }
