@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum MemberSuccessType implements SuccessType {
-  ONBOARDING_SUCCESS(HttpStatus.OK, "온보딩을 완료했습니다.");
+  ONBOARDING_SUCCESS(HttpStatus.OK, "온보딩을 완료했습니다."),
+  WITHDRAW_SUCCESS(HttpStatus.OK, "회원탈퇴를 완료했습니다.");
 
   private final HttpStatus status;
   private final String message;
