@@ -40,4 +40,19 @@ public interface MemberApi {
   @Operation(summary = "온보딩: 회원가입 이후 온보딩 요청", description = "온보딩 정보를 받습니다")
   ResponseEntity<ResponseTemplate> onboarding(
       MemberOnboardingRequest request, @Schema(hidden = true) Long memberId);
+
+  @ApiResponses(
+      value = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "회원탈퇴를 완료했습니다.",
+            content =
+                @Content(
+                    mediaType = "application/json",
+                    schema =
+                        @Schema(
+                            example =
+                                "{ \"code\": 200, \"message\": \"회원탈퇴를 완료했습니다.\", \"data\": \"No Data\" }")))
+      })
+  ResponseEntity<ResponseTemplate> withdraw(@Schema(hidden = true) Long memberId);
 }
