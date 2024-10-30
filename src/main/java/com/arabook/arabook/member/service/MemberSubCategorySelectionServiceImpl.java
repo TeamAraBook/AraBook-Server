@@ -28,7 +28,7 @@ public class MemberSubCategorySelectionServiceImpl implements MemberSubCategoryS
   @Transactional
   public void selectSubCategories(Member member, List<Long> categoryIds) {
 
-    memberSubCategorySelectionRepository.deleteAllByMember(member);
+    memberSubCategorySelectionRepository.deleteByMember(member);
 
     List<SubCategory> categories = subCategoryRepository.findAllInIds(categoryIds);
 
