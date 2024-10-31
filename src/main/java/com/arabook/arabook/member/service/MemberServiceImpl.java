@@ -20,6 +20,7 @@ public class MemberServiceImpl implements MemberService {
   private final ReviewRepository reviewRepository;
   private final MemberSubCategorySelectionRepository memberSubCategorySelectionRepository;
   private final MemberSubCategorySelectionService memberCategorySelectionService;
+  private final AIRecommendationRepository aiRecommendationRepository;
 
   @Override
   @Transactional
@@ -36,6 +37,7 @@ public class MemberServiceImpl implements MemberService {
     Member member = memberRepository.findByMemberIdOrThrow(memberId);
     memberSubCategorySelectionRepository.deleteByMember(member);
     reviewRepository.deleteByReviewer(member);
+    aiRecommendationRepository.deleteByMember(member);
     memberRepository.delete(member);
   }
 }
