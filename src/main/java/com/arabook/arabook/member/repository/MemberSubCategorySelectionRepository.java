@@ -14,6 +14,6 @@ public interface MemberSubCategorySelectionRepository
 
   @Modifying(clearAutomatically = true)
   @Transactional
-  @Query("delete from MemberSubCategorySelection mss where mss.member =: member")
+  @Query("delete from MemberSubCategorySelection mss where mss.member = :member")
   void deleteByMember(@Param("member") Member member);
 }

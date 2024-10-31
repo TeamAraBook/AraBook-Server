@@ -25,8 +25,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewCus
 
   @Modifying(clearAutomatically = true)
   @Transactional
-  @Query("delete from Review r where r.reviewer =: reviewer")
+  @Query("delete from Review r where r.reviewer = :reviewer")
   void deleteByReviewer(@Param("reviewer") Member reviewer);
-
-  void deleteAllByReviewer(final Member member);
 }
