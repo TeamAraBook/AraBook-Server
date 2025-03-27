@@ -10,11 +10,6 @@
     </thead>
     <tbody>
       <tr>
-        <td colspan="2" align="center" >
-          <img width="300" alt="성은" src="https://github.com/user-attachments/assets/e2b32405-4e64-47e5-ab00-f9d2307823fc">
-        </td>
-      </tr>
-      <tr>
         <th>역할</th>
         <td>
           - CI/CD 구축<br>
@@ -31,11 +26,11 @@
 <br><br>
 
 ## 🔑 Key Features
-<img width="800" alt="아라북 주요 기능 1" src="https://github.com/user-attachments/assets/f13e6233-29c8-429d-ba23-d932d3b461bb">
+![3  주요 기능 1](https://github.com/user-attachments/assets/5ef05a21-0bfc-4ca7-b1a3-f5b953332c57)
 <br>
-<img width="800" alt="아라북 주요 기능 2" src="https://github.com/user-attachments/assets/bd10b13e-3610-41dd-baf8-045a2a8845a3">
+![3  주요기능 2](https://github.com/user-attachments/assets/291006c3-17f9-4f6b-936a-9a4bcb9ba379)
 <br>
-<img width="800" alt="아라북 주요 기능 3" src="https://github.com/user-attachments/assets/6ce49f5f-d3a8-4861-8ed5-15dcb75b5dee">
+![3  주요기능 3](https://github.com/user-attachments/assets/7fcf33ff-a6e5-433f-8dd0-1d0733bd5b91)
 
 <br><br>
 
@@ -54,11 +49,11 @@
 <br><br>
 
 ## 📚 ERD
-<img width="800" alt="아라북 ERD" src="https://github.com/user-attachments/assets/7ded72e2-daa1-470f-986e-a7a6979338a9">
-<br><br>
+![AraBook ERD](https://github.com/user-attachments/assets/a8fcd2e3-a49d-4dfc-a056-c2b0b5700020)
 
 ## 🛠️ System Architecture
-<img width="800" alt="아라북 시스템 아키텍처" src="https://github.com/user-attachments/assets/e701ead8-8ad2-4ff2-bf53-ccb7baf1c9af">
+![시스템 구성도](https://github.com/user-attachments/assets/952617f8-2cbf-4fcb-972b-f622e2772596)
+
 
 
 <br><br>
