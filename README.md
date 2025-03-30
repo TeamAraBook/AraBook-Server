@@ -52,7 +52,8 @@
 ![AraBook ERD](https://github.com/user-attachments/assets/a8fcd2e3-a49d-4dfc-a056-c2b0b5700020)
 
 ## 🛠️ System Architecture
-![시스템 구성도](https://github.com/user-attachments/assets/952617f8-2cbf-4fcb-972b-f622e2772596)
+<img width="800" alt="시스템 아키텍처" src="https://github.com/user-attachments/assets/08eb3f19-e892-4ee3-bc0c-5bdb94afc90f" />
+
 
 
 
